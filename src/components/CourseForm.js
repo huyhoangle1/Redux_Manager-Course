@@ -4,9 +4,11 @@ import { addCourse } from '../actions/courseAction';
 import data from '../data/course.json';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from 'react-router-dom';
 
 const CourseForm = () => {
   const dispatch = useDispatch();
+  let history = useNavigate()
 
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
@@ -36,14 +38,11 @@ const CourseForm = () => {
     };
     console.log(data);
     data.courses.push(course);
-    try {
       dispatch(addCourse(course));
       setTitle('');
       setCategory('');
       setDescription('');
-    } catch (error) {
-      console.log(error);
-    }
+      history('/')
   };
 
   return (

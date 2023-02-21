@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteCourse, toggleFavorite, editCourse } from '../actions/courseAction';
 import Course from './Course';
+import {  Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 
 
 const CourseList = ({ courses }) => {
@@ -36,7 +38,7 @@ const CourseList = ({ courses }) => {
             onEdit={handleEdit}
           /> */}
         </div>
-      ));
+      ))
     }
   };
 
@@ -70,6 +72,7 @@ const CourseList = ({ courses }) => {
       {renderFavoriteCourses()}
       <h2 className='mb-5 mt-5' style={{textAlign:'center'}}>All Courses</h2>
       {renderCourses()}
+      <Button variant="outline-primary" ><Link to="/add">Add Course</Link></Button>
     </div>
   );
 };
