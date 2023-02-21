@@ -3,21 +3,27 @@ import PropTypes from 'prop-types';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import EditCourse from './EditCourse';
+import { editCourse } from '../actions/courseAction';
 
 const Course = ({ course, onDelete, onToggleFavorite }) => {
+  const [show, isShow] = useState(false);
   const handleDelete = () => {
     onDelete(course.id);
   };
 
 
-  const handleEdit = () => {
-    onEdit(course.id);
+  const showElement = () => {
+    isShow(true);
   };
 
   const handleToggleFavorite = () => {
     onToggleFavorite(course.id);
     console.log((course));
   };
+
+  const handleEdit = (id, newCourse) => {
+    dispatch(editCourse(id, newCourse));
+  }
 
   return (
     <div className="course">
@@ -34,13 +40,24 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
           <Button className="ms-5" variant="primary" onClick={handleDelete}>
                Delete
           </Button>
-          <Button className="ms-5" variant="primary" onClick={handleEdit}>
+          <Button className="ms-5" variant="primary" onClick={showElement}>
                Edit
           </Button>
-        </th>
+          </th>
         </tr>
       </thead>
     </Table>
+    <div>
+            {
+              show ?
+               <EditCourse 
+                    course={course}
+                    onEdit={handleEdit}
+                    isShow={isShow}
+               /> : 
+               <div></div>
+            }
+          </div>
     </div>
   );
 };

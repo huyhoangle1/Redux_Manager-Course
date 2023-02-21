@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { editCourse } from '../actions/courseAction';
 import { Button, Form, Table } from 'react-bootstrap';
 
-const EditCourse = ({ course, closeEditModal }) => {
+const EditCourse = ({ course, isShow }) => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState(course.title);
   const [type, setType] = useState(course.category);
@@ -19,7 +19,7 @@ const EditCourse = ({ course, closeEditModal }) => {
     e.preventDefault();
     const updatedCourse = { title, type, description, exercises };
     dispatch(editCourse(course.id, updatedCourse));
-    closeEditModal();
+    isShow(false);
   };
 
   return (
@@ -32,7 +32,7 @@ const EditCourse = ({ course, closeEditModal }) => {
           <Form.Control value={exercises} onChange={handleExercisesChange} type="text" size="sm20" />
         </Form.Group>
         <Button className='ms-5 mb-5' variant="primary" type="submit">Save Changes</Button>
-        <Button className='ms-5 mb-5' variant="primary" type="button" onClick={()=> closeEditModal()}>Cancel</Button> 
+        <Button className='ms-5 mb-5' variant="primary" type="button" onClick={()=> isShow(false)}>Cancel</Button> 
    </Form>
         </div>
   );

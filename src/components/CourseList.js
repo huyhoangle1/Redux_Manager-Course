@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteCourse, toggleFavorite, editCourse } from '../actions/courseAction';
 import Course from './Course';
-import EditCourse from './EditCourse'
 
 
 const CourseList = ({ courses }) => {
@@ -32,10 +31,10 @@ const CourseList = ({ courses }) => {
             onDelete={handleDelete}
             onToggleFavorite={handleToggleFavorite}
           />
-          <EditCourse
+          {/* <EditCourse
             course={course}
             onEdit={handleEdit}
-          />
+          /> */}
         </div>
       ));
     }
