@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import CourseList from './components/CourseList';
+import CourseForm from './components/CourseForm';
+import SearchBar from './components/SearchBar';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+const App = () => {
+  const courses = useSelector(state => state.courses);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1 style={{textAlign:'center'}}>Course Manager</h1>
+      <SearchBar />
+      <CourseList courses={courses} />
+      <CourseForm />
     </div>
   );
-}
+};
 
 export default App;

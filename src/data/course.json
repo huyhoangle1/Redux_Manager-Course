@@ -1,0 +1,76 @@
+{
+    "courses": [
+      {
+        "id": 1,
+        "title": "React Fundamentals",
+        "category": "React",
+        "description": "Learn the basics of React, including components, JSX, and props.",
+        "exercises": [
+          {
+            "id": 1,
+            "title": "Intro to JSX",
+            "completed": false
+          },
+          {
+            "id": 2,
+            "title": "Components",
+            "completed": true
+          },
+          {
+            "id": 3,
+            "title": "Props",
+            "completed": false
+          }
+        ],
+        "favorite": true
+      },
+      {
+        "id": 2,
+        "title": "React Hooks",
+        "category": "React",
+        "description": "Learn about React's new Hooks API for managing state and effects.",
+        "exercises": [
+          {
+            "id": 1,
+            "title": "useState",
+            "completed": true
+          },
+          {
+            "id": 2,
+            "title": "useEffect",
+            "completed": false
+          },
+          {
+            "id": 3,
+            "title": "useContext",
+            "completed": false
+          }
+        ],
+        "favorite": false
+      },
+      {
+        "id": 3,
+        "title": "Node.js Basics",
+        "category": "Node.js",
+        "description": "Learn the basics of Node.js, including modules, NPM, and the event loop.",
+        "exercises": [
+          {
+            "id": 1,
+            "title": "Modules",
+            "completed": true
+          },
+          {
+            "id": 2,
+            "title": "NPM",
+            "completed": true
+          },
+          {
+            "id": 3,
+            "title": "Event Loop",
+            "completed": false
+          }
+        ],
+        "favorite": false
+      }
+    ]
+  }
