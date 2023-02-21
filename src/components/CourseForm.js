@@ -4,7 +4,7 @@ import { addCourse } from '../actions/courseAction';
 import data from '../data/course.json';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const CourseForm = () => {
   const dispatch = useDispatch();
@@ -48,6 +48,9 @@ const CourseForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <h2 style={{textAlign:'center'}}>Add Course</h2>
+      <p style={{color:'black'}}>
+              <Link to="/">All Course</Link>    
+       </p>
           <Form.Group className="mb-2">
               <Form.Label type="title">Course Title:</Form.Label>
               <Form.Control required value={title} id="title" type="text" onChange={handleTitleChange} placeholder="Input Title" />
@@ -57,7 +60,7 @@ const CourseForm = () => {
               <Form.Control required value={category} id="category" type="text" onChange={handleCategoryChange} placeholder="Input category" />
           </Form.Group>
           <Form.Group className="mb-3">
-          <Form.Label>Course Title:</Form.Label>
+          <Form.Label>description</Form.Label>
               <Form.Control required value={description} id="description" type="text" onChange={handleDescriptionChange} placeholder="Input description" />
           </Form.Group>
           <Button variant="primary" type="submit">

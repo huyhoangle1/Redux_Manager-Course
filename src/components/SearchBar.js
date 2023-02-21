@@ -21,9 +21,9 @@ const SearchBar = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-2">
-          <Form.Label type="title">Search Courses:</Form.Label>
-          <Form.Control className='mb-5' value={query} id="search" type="text" onChange={handleQueryChange} />
-          <Button type="submit" variant="primary"> Search </Button>
+          <Form.Label type="title"><h3>Search Courses:</h3></Form.Label>
+          <Form.Control value={query} id="search" type="text" onChange={handleQueryChange} />
+          <Button className='mt-2' type="submit" variant="primary"> Search </Button>
       </Form.Group>
     </Form>
   );
