@@ -1,41 +1,71 @@
-import React from 'react';
-import { Button,Modal } from 'react-bootstrap';
-import Table from 'react-bootstrap/Table';
+import React, { useState } from "react";
+import { Modal, Button, Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { editExercise } from "../actions/courseAction";
 
+const EditExercisesModel = ({ courseTasks, showExercisesModal, isExercisesShowModal, course }) => {
+  const [title, setTitle] = useState(courseTasks?.title);
+  const [id, setId] = useState(courseTasks?.id);
+  const dispatch = useDispatch();
 
-const EditExercisesModel = ({courseTasks, showExercisesModal, isExercisesShowModal}) => {
+  const handleClose = () => {
+    isExercisesShowModal(false);
+  };
 
-    const handleClose=()=>{
-      isExercisesShowModal(false);
-      console.log(courseTasks);
-    }
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   const newExercise = {
+  //     id: exerciseId,
+  //     title: exerciseTitle,
+  //     completed: false
+  //   };
+  //   setExercises([...exercises, newExercise]);
+  //   setExerciseTitle('');
+  //   setExerciseId(exerciseId + 1);
+  // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const updates = {
+      id: id,
+      title: title,
+    };
+    const updatedCourseTask = { ...courseTasks, ...updates };
+    dispatch(editExercise(course.id, courseTasks.id, updatedCourseTask));
+    handleClose();
+  };
 
   return (
-    <div
-    className="modal show"
-    style={{ display: 'block', position: 'initial' }}
-  >
+    <div>
       <Modal show={showExercisesModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Exercises</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* {
-            courseTasks.map((i)=>{
-              <Input></Input>
-            })
-          } */}
+          <Form onSubmit={handleSubmit}>
+            <Form.Group>
+            <Form.Label>Bài Tập Số</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter title"
+                value={id}
+                onChange={(e) => setId(e.target.value)}
+              />
+              <Form.Label>Assignment Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Save Changes
+            </Button>
+          </Form>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
-  </div>
+    </div>
   );
 };
 

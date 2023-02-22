@@ -11,29 +11,27 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
   const [editItem, setEditItem] = useState(null);
 
   const handleOpen = (item) => {
-    console.log(item);
     setEditItem(item);
     isExercisesShowModal(true);
   };
 
   const handleClose = () => {
     isShowModal(false);
-    console.log(course);
   };
 
-  const handleToggleFavorite = item => {
-    dispatch(exerciseStatus(item.id));
+  const handleExerciseStatus = (item) => {
+    dispatch(exerciseStatus(course.id, item.id));
   };
 
   const renderButton = (item) => {
     return (
       <div>
-        <Button onClick={() => handleOpen(item)}>Sửa Bài Tập</Button>
+        <Button onClick={() => handleOpen(item)}>Edit</Button>
         <Button
           variant="primary"
-          onClick={() => handleToggleFavorite(item)}
+          onClick={() => handleExerciseStatus(item)}
         >
-          {item?.completed ? "Chưa Hoàn Thành" : "Hoàn Thành"}
+          {item?.completed ? "Complete" : "Unfinished"}
         </Button>
       </div>
     );
@@ -54,16 +52,16 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Tên Khóa Học : {course.title}</h4>
-          <p>Nội Dung Khóa Học: {course.description}</p>
-          <h2>Danh Sách Bài Tập:</h2>
+          <h4>Course Name: {course.title}</h4>
+          <p>Course Description: {course.description}</p>
+          <h2>Exercise List:</h2>
           <Table>
             <thead>
               <tr>
                 <th>#</th>
-                <th>Tên Bài</th>
-                <th>Tình Trạng</th>
-                <th>Chức Năng</th>
+                <th>Assignment Name</th>
+                <th>Exercise Status</th>
+                <th>Extend</th>
               </tr>
             </thead>
             <tbody>
@@ -72,7 +70,7 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
                   <td>{item?.id}</td>
                   <td>{item?.title}</td>
                   <td>
-                    {item?.completed ? "Hoàn Thành" : "Chưa Hoàn Thành"}
+                    {item?.completed ? "Complete" : "Unfinished"}
                   </td>
                   <td>
                     <div>{renderButton(item)}</div>
@@ -85,6 +83,7 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
         <div>
           {showExercisesModal ? (
             <EditExercisesModel
+              course={course}
               courseTasks={editItem}
               showExercisesModal={showExercisesModal}
               isExercisesShowModal={isExercisesShowModal}
