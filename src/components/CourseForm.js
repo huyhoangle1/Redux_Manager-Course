@@ -48,12 +48,17 @@ const CourseForm = () => {
 
   const handleSubmit =async e => {
     e.preventDefault();
+    const newExercise = {
+      id: exerciseId,
+      title: exerciseTitle,
+      completed: false
+    };
     const course = {
       title,
       category,
       description,
       favorite: false,
-      tasks: exercises  
+      tasks: [newExercise]
     };
       dispatch(addCourse(course));
       setTitle('');
