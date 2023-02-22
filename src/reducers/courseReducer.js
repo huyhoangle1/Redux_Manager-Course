@@ -1,4 +1,4 @@
-import { ADD_COURSE, EDIT_COURSE, DELETE_COURSE, TOGGLE_FAVORITE, SEARCH_COURSES, SET_COURSES  } from '../constants/CourseTypes';
+import { ADD_COURSE, EDIT_COURSE, DELETE_COURSE, TOGGLE_FAVORITE, SEARCH_COURSES, SET_COURSES, ADD_EXERCISE  } from '../constants/CourseTypes';
   import { v4 as uuidv4 } from 'uuid';
   
   const coursesReducer = (state = [], action) => {

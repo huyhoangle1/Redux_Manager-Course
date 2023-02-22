@@ -41,7 +41,7 @@ const InfoModel = ({course, showModal, isShowModal}) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {course.exercises?.map((item, index) =>
+                    {course.tasks?.map((item, index) =>
                         <tr key={`stydy-${index}`} className="number">
                             <td>{item?.id}</td>
                             <td>{item?.title}</td>
