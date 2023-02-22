@@ -8,12 +8,14 @@ const EditCourse = ({ course, isShow, show }) => {
   const [title, setTitle] = useState(course.title);
   const [category, setCategory] = useState(course.category);
   const [description, setDescription] = useState(course.description);
-  const [exercises, setExercises] = useState(course.exercises);
+  // const [exercises, setExercises] = useState(course.tasks);
+  // const [exercisesTitle, setExerciseTitle] = useState(course.tasks.title);
 
   const handleTitleChange = e => setTitle(e.target.value);
   const handleTypeChange = e => setCategory(e.target.value);
   const handleDescriptionChange = e => setDescription(e.target.value);
   const handleExercisesChange = e => setExercises(e.target.value);
+  // const handleExercisesTitleChange = e => setExerciseTitle(e.target.value);
 
   const handleEditCourse = e => {
     e.preventDefault();
@@ -41,10 +43,15 @@ const EditCourse = ({ course, isShow, show }) => {
         <Modal.Body>
           <Form onSubmit={handleEditCourse}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control value={title} onChange={handleTitleChange} type="text" />
-              <Form.Control value={category} onChange={handleTypeChange} type="text" />
-              <Form.Control value={description} onChange={handleDescriptionChange} type="text" />
-              <Form.Control value={exercises} onChange={handleExercisesChange} type="text" size="sm20" />
+              <Form.Label>Tên Khóa Học</Form.Label>
+              <Form.Control className='mb-3'  value={title} onChange={handleTitleChange} type="text" />
+              <Form.Label>Loại Khóa Học</Form.Label>
+              <Form.Control className='mb-3' value={category} onChange={handleTypeChange} type="text" />
+              <Form.Label>Mô tả Khóa Học</Form.Label>
+              <Form.Control className='mb-3' value={description} onChange={handleDescriptionChange} type="text" />
+              {/* <Form.Label>Edit Title:</Form.Label>
+              <Form.Control value={exercisesTitle} id="exerciseTitle" type="text" onChange={handleExercisesTitleChange} placeholder="Edit exercise title" />
+              <Form.Control value={exercises} onChange={handleExercisesChange} type="text" size="sm20" /> */}
             </Form.Group>
             <div style={{ textAlign: 'center' }}>
               <Button variant="primary" type="submit">Save Changes</Button>

@@ -4,4 +4,4 @@ export const EDIT_COURSE = 'EDIT_COURSE';
 export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE';
 export const SEARCH_COURSES = 'SEARCH_COURSES';
 export const SET_COURSES = 'SET_COURSES';
-export const ADD_EXERCISE = 'ADD_EXERCISE';
+export const EXERCISE_STATUS = 'EXERCISE_STATUS';

@@ -47,7 +47,6 @@ const CourseForm = () => {
 
 
   const handleSubmit =async e => {
-    console.log(exercises,"aaaa");
     e.preventDefault();
     const course = {
       title,

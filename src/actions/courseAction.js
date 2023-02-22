@@ -29,6 +29,13 @@ return {
 };
 };
 
+export const exerciseStatus = id => {
+    return {
+        type: types.EXERCISE_STATUS,
+        id
+    };
+    };
+
 export const searchCourses = searchText => {
 return {
     type: types.SEARCH_COURSES,

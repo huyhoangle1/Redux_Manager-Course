@@ -1,4 +1,4 @@
-import { ADD_COURSE, EDIT_COURSE, DELETE_COURSE, TOGGLE_FAVORITE, SEARCH_COURSES, SET_COURSES, ADD_EXERCISE  } from '../constants/CourseTypes';
+import { ADD_COURSE, EDIT_COURSE, DELETE_COURSE, TOGGLE_FAVORITE, SEARCH_COURSES, SET_COURSES, EXERCISE_STATUS  } from '../constants/CourseTypes';
   import { v4 as uuidv4 } from 'uuid';
   
   const coursesReducer = (state = [], action) => {
@@ -27,6 +27,19 @@ import { ADD_COURSE, EDIT_COURSE, DELETE_COURSE, TOGGLE_FAVORITE, SEARCH_COURSES
         );
         localStorage.setItem('coursesState', JSON.stringify(toggledState));
         return toggledState;
+      
+      case EXERCISE_STATUS:
+        const dataState = JSON.parse(localStorage.getItem('coursesState'));
+        console.log(dataState);
+        const data = dataState ? dataState : [];
+        console.log(state.tasks);
+        console.log(action);
+        const exerciseStatus = data.tasks.map(course =>
+          course.id === action.id ? { ...course, completed: !course.completed } : course
+        );
+        localStorage.setItem('coursesState', JSON.stringify(exerciseStatus));
+        return exerciseStatus; 
+
       case SEARCH_COURSES:
         const storedState = JSON.parse(localStorage.getItem('coursesState'));
         const courses = storedState ? storedState : [];
