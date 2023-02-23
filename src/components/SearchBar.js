@@ -19,18 +19,18 @@ const SearchBar = () => {
   };
 
   return (
-        <Form onSubmit={handleSubmit} className="d-flex ms-5">
-          <Form.Control
-            value={query}
-            id='search'
-            type="text"
-            placeholder="Search"
-            className="me-2"
-            aria-label="Search"
-            onChange={handleQueryChange}
-          />
-         <Button type="submit" variant="outline-success">Search</Button>
-        </Form>
+    <Form onSubmit={handleSubmit} className="d-flex ms-5">
+      <Form.Control
+        value={query}
+        id='search'
+        type="text"
+        placeholder="Search"
+        className="me-2"
+        aria-label="Search"
+        onChange={handleQueryChange}
+      />
+      <Button type="submit" variant="outline-success">Search</Button>
+    </Form>
   );
 };
 

@@ -26,7 +26,7 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
   const renderButton = (item) => {
     return (
       <div className="d-flex justify-content-center my-auto align-items-center">
-        <Button style={{width:100}} className="me-5" onClick={() => handleOpen(item)}>Edit</Button>
+        <Button style={{ width: 100 }} className="me-5" onClick={() => handleOpen(item)}>Edit</Button>
         <Button
           variant="primary"
           onClick={() => handleExerciseStatus(item)}
@@ -57,7 +57,7 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
           <h2>Exercise List:</h2>
           <Table>
             <thead>
-              <tr style={{textAlign:"center"}}>
+              <tr style={{ textAlign: "center" }}>
                 <th>#</th>
                 <th>Assignment Name</th>
                 <th>Exercise Status</th>
@@ -66,7 +66,7 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
             </thead>
             <tbody>
               {course.tasks?.map((item, index) => (
-                <tr style={{textAlign:"center"}} className="number">
+                <tr style={{ textAlign: "center" }} className="number">
                   <td>{item?.id}</td>
                   <td>{item?.title}</td>
                   <td>

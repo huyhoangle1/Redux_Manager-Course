@@ -32,7 +32,7 @@ const EditExercisesModel = ({ courseTasks, showExercisesModal, isExercisesShowMo
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-            <Form.Label>#</Form.Label>
+              <Form.Label>#</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter title"

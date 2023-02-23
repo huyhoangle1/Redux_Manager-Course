@@ -14,15 +14,15 @@ const App = () => {
 
   return (
     <div>
-    <Header />
-    <BrowserRouter>
-    <Routes>
-        <Route path="/" element={<CourseList courses={courses} />}/>
-        <Route path="/Add" element={<CourseForm />}/>
-        <Route path="/search" element={<SearchBar />}/>
-        <Route path="/myfavorite" element={<FavoriteList />}/>
-    </Routes>
-  </BrowserRouter>
+      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CourseList courses={courses} />} />
+          <Route path="/Add" element={<CourseForm />} />
+          <Route path="/search" element={<SearchBar />} />
+          <Route path="/myfavorite" element={<FavoriteList />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

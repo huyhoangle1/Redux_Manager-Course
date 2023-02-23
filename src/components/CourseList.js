@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteCourse, toggleFavorite, editCourse } from '../actions/courseAction';
 import Course from './Course';
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBar from './SearchBar';
 import { Button } from 'react-bootstrap';
 
@@ -16,7 +16,7 @@ const CourseList = () => {
     const savedCourses = JSON.parse(localStorage.getItem('coursesState'));
     // console.log(savedCourses);
     if (savedCourses) {
-      console.log(savedCourses,'tttt');
+      console.log(savedCourses, 'tttt');
       dispatch({ type: 'SET_COURSES', courses: savedCourses });
     }
   }, [dispatch]);
@@ -51,7 +51,7 @@ const CourseList = () => {
     } else {
       return (
         <div className="favorite-courses">
-          <h3 className='mb-5' style={{textAlign:'center'}}>Favorite Courses</h3>
+          <h3 className='mb-5' style={{ textAlign: 'center' }}>Favorite Courses</h3>
           {favoriteCourses.map(course => (
             <div key={course.id}>
               <Course
@@ -70,7 +70,7 @@ const CourseList = () => {
     <div>
       {/* <SearchBar /> */}
       {/* {renderFavoriteCourses()} */}
-      <h2 className='mb-5 mt-5' style={{textAlign:'center',color:'violet'}}>All Courses</h2>
+      <h2 className='mb-5 mt-5' style={{ textAlign: 'center', color: 'violet' }}>All Courses</h2>
       {renderCourses()}
       <Button variant="outline-primary" ><Link to="/add">Add Course</Link></Button>
     </div>

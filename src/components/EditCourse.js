@@ -41,7 +41,7 @@ const EditCourse = ({ course, isShow, show }) => {
           <Form onSubmit={handleEditCourse}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Tên Khóa Học</Form.Label>
-              <Form.Control className='mb-3'  value={title} onChange={handleTitleChange} type="text" />
+              <Form.Control className='mb-3' value={title} onChange={handleTitleChange} type="text" />
               <Form.Label>Loại Khóa Học</Form.Label>
               <Form.Control className='mb-3' value={category} onChange={handleTypeChange} type="text" />
               <Form.Label>Mô tả Khóa Học</Form.Label>
