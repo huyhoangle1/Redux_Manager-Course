@@ -16,7 +16,7 @@ const EditCourse = ({ course, isShow, show }) => {
 
   const handleEditCourse = e => {
     e.preventDefault();
-    const updatedCourse = { title, category, description, exercises };
+    const updatedCourse = { title, category, description };
     dispatch(editCourse(course.id, updatedCourse));
     isShow(false);
   };
