@@ -12,18 +12,6 @@ const EditExercisesModel = ({ courseTasks, showExercisesModal, isExercisesShowMo
     isExercisesShowModal(false);
   };
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const newExercise = {
-  //     id: exerciseId,
-  //     title: exerciseTitle,
-  //     completed: false
-  //   };
-  //   setExercises([...exercises, newExercise]);
-  //   setExerciseTitle('');
-  //   setExerciseId(exerciseId + 1);
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const updates = {
@@ -44,7 +32,7 @@ const EditExercisesModel = ({ courseTasks, showExercisesModal, isExercisesShowMo
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-            <Form.Label>Bài Tập Số</Form.Label>
+            <Form.Label>#</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter title"

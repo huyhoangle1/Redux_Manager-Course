@@ -53,12 +53,13 @@ const CourseForm = () => {
       title: exerciseTitle,
       completed: false
     };
+    const arr = [newExercise];
     const course = {
       title,
       category,
       description,
       favorite: false,
-      tasks: [newExercise]
+      tasks:exercises.length > 0 ? exercises : [...arr]
     };
       dispatch(addCourse(course));
       setTitle('');
@@ -69,39 +70,38 @@ const CourseForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 style={{textAlign:'center'}}>Add Course</h2>
-      <p style={{color:'black'}}>
-              <Link to="/">All Course</Link>    
-       </p>
-          <Form.Group className="mb-2">
-              <Form.Label type="title">Course Title:</Form.Label>
+      <h2 style={{textAlign:'center', marginTop:30}}>Add Course</h2>
+          <Form.Group className="mb-3 mx-5">
+              <Form.Label type="title"><h4>Course Title:</h4></Form.Label>
               <Form.Control required value={title} id="title" type="text" onChange={handleTitleChange} placeholder="Input Title" />
           </Form.Group>
-          <Form.Group className="mb-3">
-          <Form.Label>Category:</Form.Label>
+          <Form.Group className="mb-3 mx-5">
+          <Form.Label><h4>Category:</h4></Form.Label>
               <Form.Control required value={category} id="category" type="text" onChange={handleCategoryChange} placeholder="Input category" />
           </Form.Group>
-          <Form.Group className="mb-3">
-          <Form.Label>description</Form.Label>
+          <Form.Group className="mb-3 mx-5">
+          <Form.Label><h4>Description</h4></Form.Label>
               <Form.Control required value={description} id="description" type="text" onChange={handleDescriptionChange} placeholder="Input description" />
           </Form.Group>
-          <Form.Group className="mb-3">
-          <Form.Label>Exercise Title:</Form.Label>
+          <Form.Group className="mb-3 mx-5">
+          <Form.Label><h4>Exercise Title:</h4></Form.Label>
           <Form.Control value={exerciseTitle} id="exerciseTitle" type="text" onChange={handleExerciseTitleChange} placeholder="Input exercise title" />
         </Form.Group>
-          <Button variant="primary" type="submit">
-              Submit
+        <div className='d-flex justify-content-center'>
+          <Button className='mx-5' variant="primary" type="submit">
+                  Submit
           </Button>
           <Button variant="secondary" type="button" onClick={handleAddExercise}>
-        Add Exercise
-      </Button>
+            Add Exercise
+          </Button>
+        </div>
       {exercises.length > 0 && 
         <div>
-          <h3>Exercises:</h3>
+          <h3 className='mx-5 my-3'>Exercises:</h3>
           <ul>
             {exercises.map(exercise => (
-              <li key={exercise.id}>
-                {exercise.title}
+              <li className='mx-5' key={exercise.id}>
+                  #{exercise.id}---------{exercise.title}
               </li>))}
             </ul>
           </div>

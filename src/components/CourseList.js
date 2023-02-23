@@ -29,10 +29,6 @@ const CourseList = () => {
     dispatch(toggleFavorite(id));
   };
 
-  const handleEdit = (id, newCourse) => {
-    dispatch(editCourse(id, newCourse));
-  }
-
   const renderCourses = () => {
     if (courses.length === 0) {
       return <p>No courses found.</p>
@@ -44,10 +40,6 @@ const CourseList = () => {
             onDelete={handleDelete}
             onToggleFavorite={handleToggleFavorite}
           />
-          {/* <EditCourse
-            course={course}
-            onEdit={handleEdit}
-          /> */}
         </div>
       ))
     }
@@ -67,10 +59,6 @@ const CourseList = () => {
                 onDelete={handleDelete}
                 onToggleFavorite={handleToggleFavorite}
               />
-              {/* <Course
-                course={course}
-                onEdit={handleEdit}
-              /> */}
             </div>
           ))}
         </div>
@@ -80,9 +68,9 @@ const CourseList = () => {
 
   return (
     <div>
-      <SearchBar />
-      {renderFavoriteCourses()}
-      <h2 className='mb-5 mt-5' style={{textAlign:'center'}}>All Courses</h2>
+      {/* <SearchBar /> */}
+      {/* {renderFavoriteCourses()} */}
+      <h2 className='mb-5 mt-5' style={{textAlign:'center',color:'violet'}}>All Courses</h2>
       {renderCourses()}
       <Button variant="outline-primary" ><Link to="/add">Add Course</Link></Button>
     </div>

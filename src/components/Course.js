@@ -35,26 +35,37 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
       <Table striped bordered hover size="sm">
       <thead>
         <tr>
-          <th style={{width:250}}>{course.title}
-          <Button className='ms-2' variant='primary' onClick={infoStatus}>info</Button>
+          <th scope="col">Name/Info</th>
+          <th scope="col">Category</th>
+          <th scope="col">Description</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>
+            <div style={{display:'flex'}}>
+              <div style={{width:150}}>{course.title}</div>
+              <Button className='ms-2' variant='primary' onClick={infoStatus}>info</Button>
+            </div>
           </th>
-          <th style={{width:80}}>{course.category}</th>
-          <th style={{width:800}}>{course.description}</th>
+          <th className='p-4' style={{width:80}}>{course.category}</th>
+          <th className='p-4' style={{width:800}}>{course.description}</th>
           <th> 
-          <div>
-            <Button variant="primary" onClick={handleToggleFavorite}>
+          <div className='row justify-content-center my-auto align-items-center mt-40'>
+            <Button style={{width:100}} variant="primary" onClick={handleToggleFavorite}>
                 {course.favorite ? 'Unfavorite' : 'Favorite'}
             </Button>
-            <Button style={{marginLeft: 50, marginRight: 50}} variant="primary" onClick={handleDelete}>
+            <Button style={{width:100}} variant="primary" onClick={handleDelete}>
                 Delete
             </Button>
-            <Button variant="primary" onClick={showElement}>
+            <Button style={{width:100}} variant="primary" onClick={showElement}>
                 Edit
             </Button>
           </div>
           </th>
         </tr>
-      </thead>
+      </tbody>
     </Table>
     <div>
       {

@@ -19,13 +19,18 @@ const SearchBar = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-2">
-          <Form.Label type="title"><h3>Search Courses:</h3></Form.Label>
-          <Form.Control value={query} id="search" type="text" onChange={handleQueryChange} />
-          <Button className='mt-2' type="submit" variant="primary"> Search </Button>
-      </Form.Group>
-    </Form>
+        <Form onSubmit={handleSubmit} className="d-flex ms-5">
+          <Form.Control
+            value={query}
+            id='search'
+            type="text"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+            onChange={handleQueryChange}
+          />
+         <Button type="submit" variant="outline-success">Search</Button>
+        </Form>
   );
 };
 
