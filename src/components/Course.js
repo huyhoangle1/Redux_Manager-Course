@@ -44,19 +44,19 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
         <tbody>
           <tr>
             <th>
-              <div style={{ display: 'flex' }}>
-                <div style={{ width: 150 }}>{course.title}</div>
-                <Button className='ms-2' variant='primary' onClick={infoStatus}>info</Button>
+              <div style={{ textAlign: 'center', width: 150, height: 150, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <div>{course.title}</div>
+                <Button variant='primary' className='ms-3' onClick={infoStatus}>info</Button>
               </div>
             </th>
             <th className='p-4' style={{ width: 80 }}>{course.category}</th>
             <th className='p-4' style={{ width: 800 }}>{course.description}</th>
-            <th>
-              <div className='row justify-content-center my-auto align-items-center mt-40'>
+            <th style={{ justifyContent: 'center', display: 'flex', height: 200, alignItems: 'center' }}>
+              <div>
                 <Button style={{ width: 100 }} variant="primary" onClick={handleToggleFavorite}>
                   {course.favorite ? 'Unfavorite' : 'Favorite'}
                 </Button>
-                <Button style={{ width: 100 }} variant="primary" onClick={handleDelete}>
+                <Button className='m-5' style={{ width: 100 }} variant="primary" onClick={handleDelete}>
                   Delete
                 </Button>
                 <Button style={{ width: 100 }} variant="primary" onClick={showElement}>

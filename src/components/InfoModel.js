@@ -47,7 +47,7 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
+          <Modal.Title id="contained-modal-title-vcenter" className="modal-title w-100 text-center">
             Course Information
           </Modal.Title>
         </Modal.Header>

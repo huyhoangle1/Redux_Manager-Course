@@ -27,12 +27,12 @@ const EditExercisesModel = ({ courseTasks, showExercisesModal, isExercisesShowMo
     <div>
       <Modal show={showExercisesModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit Exercises</Modal.Title>
+          <Modal.Title className="modal-title w-100 text-center">Edit Exercises</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Label>#</Form.Label>
+              <Form.Label>Lesson</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter title"
@@ -47,7 +47,7 @@ const EditExercisesModel = ({ courseTasks, showExercisesModal, isExercisesShowMo
                 onChange={(e) => setTitle(e.target.value)}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button className="mt-4 text-center" variant="primary" type="submit">
               Save Changes
             </Button>
           </Form>
