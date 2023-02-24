@@ -1,9 +1,12 @@
 import * as types from '../constants/CourseTypes';
 
-export const addCourse = course => {
+export const addCourse = (course, imagePath) => {
     return {
         type: types.ADD_COURSE,
-        course
+        course: {
+            ...course,
+            imagePath
+        }
     };
 };
 

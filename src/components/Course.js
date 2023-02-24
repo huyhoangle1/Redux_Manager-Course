@@ -23,7 +23,6 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
 
   const handleToggleFavorite = () => {
     onToggleFavorite(course.id);
-    console.log((course));
   };
 
   const handleEdit = (id, newCourse) => {
@@ -35,7 +34,6 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th scope="col">Name/Info</th>
             <th scope="col">Category</th>
             <th scope="col">Description</th>
             <th scope="col">Handle</th>
@@ -44,10 +42,11 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
         <tbody>
           <tr>
             <th>
-              <div style={{ textAlign: 'center', width: 150, height: 150, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div>{course.title}</div>
-                <Button variant='primary' className='ms-3' onClick={infoStatus}>info</Button>
-              </div>
+            <div style={{ textAlign: 'center', width: 150, height: 150, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src={course.imagepath} alt={course.title} style={{ width: '20px', height: '20px', objectFit: 'cover', marginRight:"10px" }} />
+              <div>{course.title}</div>
+              <Button variant='primary' className='ms-3' onClick={infoStatus}>info</Button>
+            </div>
             </th>
             <th className='p-4' style={{ width: 80 }}>{course.category}</th>
             <th className='p-4' style={{ width: 800 }}>{course.description}</th>

@@ -16,6 +16,9 @@ const CourseForm = () => {
   const [exerciseTitle, setExerciseTitle] = useState('');
   const [exercises, setExercises] = useState([]);
   const [exerciseId, setExerciseId] = useState(1);
+  const [file, setFile] = useState(null);
+  const [imagePath, setImagePath] = useState('');
+
 
   const handleTitleChange = e => {
     setTitle(e.target.value);
@@ -45,6 +48,12 @@ const CourseForm = () => {
     setExerciseId(exerciseId + 1);
   };
 
+  const onChangeImage = e => {
+    const file = e.target.files[0];
+    setFile(file);
+    setImagePath(URL.createObjectURL(file));
+  };
+
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -59,12 +68,14 @@ const CourseForm = () => {
       category,
       description,
       favorite: false,
-      tasks: exercises.length > 0 ? exercises : [...arr]
+      tasks: exercises.length > 0 ? exercises : [...arr],
+      imagepath: imagePath
     };
     dispatch(addCourse(course));
     setTitle('');
     setCategory('');
     setDescription('');
+    setImagePath('');
     history('/')
   };
 
@@ -82,6 +93,10 @@ const CourseForm = () => {
       <Form.Group className="mb-3 mx-5">
         <Form.Label><h4>Description</h4></Form.Label>
         <Form.Control required value={description} id="description" type="text" onChange={handleDescriptionChange} placeholder="Input description" />
+      </Form.Group>
+      <Form.Group controlId="formFileSm" className="mb-3 mx-5">
+        <Form.Label>Image: </Form.Label>
+        <Form.Control type="file" accept='.jpg, .png, .jpeg' onChange={onChangeImage} size="sm" />
       </Form.Group>
       <Form.Group className="mb-3 mx-5">
         <Form.Label><h4>Exercise Title:</h4></Form.Label>
