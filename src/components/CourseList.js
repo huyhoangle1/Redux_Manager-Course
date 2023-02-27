@@ -45,31 +45,9 @@ const CourseList = () => {
     }
   };
 
-  const renderFavoriteCourses = () => {
-    if (favoriteCourses.length === 0) {
-      return null;
-    } else {
-      return (
-        <div className="favorite-courses">
-          <h3 className='mb-5' style={{ textAlign: 'center' }}>Favorite Courses</h3>
-          {favoriteCourses.map(course => (
-            <div key={course.id}>
-              <Course
-                course={course}
-                onDelete={handleDelete}
-                onToggleFavorite={handleToggleFavorite}
-              />
-            </div>
-          ))}
-        </div>
-      );
-    }
-  };
 
   return (
     <div>
-      {/* <SearchBar /> */}
-      {/* {renderFavoriteCourses()} */}
       <h2 className='mb-5 mt-5' style={{ textAlign: 'center', color: 'violet' }}>All Courses</h2>
       {renderCourses()}
       <Button variant="outline-primary" ><Link to="/add">Add Course</Link></Button>

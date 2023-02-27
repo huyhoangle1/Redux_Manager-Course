@@ -18,6 +18,8 @@ const CourseForm = () => {
   const [exerciseId, setExerciseId] = useState(1);
   const [file, setFile] = useState(null);
   const [imagePath, setImagePath] = useState('');
+  const [startDay, setStartDay] = useState('')
+  const [endDay, setEndDay] = useState('')
 
 
   const handleTitleChange = e => {
@@ -34,6 +36,14 @@ const CourseForm = () => {
 
   const handleExerciseTitleChange = e => {
     setExerciseTitle(e.target.value);
+  };
+
+  const handleStartDay = e => {
+    setStartDay(e.target.value);
+  };
+
+  const handleEndDay = e => {
+    setEndDay(e.target.value);
   };
 
   const handleAddExercise = e => {
@@ -63,11 +73,16 @@ const CourseForm = () => {
       completed: false
     };
     const arr = [newExercise];
+    const exercisesLength = exercises.filter((item)=>item.completed === true).length
     const course = {
       title,
       category,
       description,
       favorite: false,
+      startDay,
+      endDay,
+      exercisesLength: exercisesLength,
+      length: exercises.length,
       tasks: exercises.length > 0 ? exercises : [...arr],
       imagepath: imagePath
     };
@@ -93,6 +108,14 @@ const CourseForm = () => {
       <Form.Group className="mb-3 mx-5">
         <Form.Label><h4>Description</h4></Form.Label>
         <Form.Control required value={description} id="description" type="text" onChange={handleDescriptionChange} placeholder="Input description" />
+      </Form.Group>
+      <Form.Group className="mb-3 mx-5">
+        <Form.Label><h4>Start Day</h4></Form.Label>
+        <Form.Control required value={startDay} id="description" type="date" onChange={handleStartDay} placeholder="Input Start Day" />
+      </Form.Group>
+      <Form.Group className="mb-3 mx-5">
+        <Form.Label><h4>End Day</h4></Form.Label>
+        <Form.Control required value={endDay} id="description" type="date" onChange={handleEndDay} placeholder="Input End Day" />
       </Form.Group>
       <Form.Group controlId="formFileSm" className="mb-3 mx-5">
         <Form.Label>Image: </Form.Label>

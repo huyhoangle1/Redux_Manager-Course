@@ -4,7 +4,9 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import EditCourse from './EditCourse';
 import { editCourse } from '../actions/courseAction';
-import InfoModel from './InfoModel'
+import InfoModel from './InfoModel';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Course = ({ course, onDelete, onToggleFavorite }) => {
   const [show, isShow] = useState(false);
@@ -34,35 +36,42 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
+            <th scope="col">Name/Info</th>
             <th scope="col">Category</th>
             <th scope="col">Description</th>
             <th scope="col">Handle</th>
+            <th scope='col'>Start Day</th>
+            <th scope='col'>End Day</th>
+            <th scope='col'>Progress</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr style={{height:150}}>
             <th>
-            <div style={{ textAlign: 'center', width: 150, height: 150, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <div style={{ textAlign: 'center', width: 150, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <img src={course.imagepath} alt={course.title} style={{ width: '20px', height: '20px', objectFit: 'cover', marginRight:"10px" }} />
               <div>{course.title}</div>
               <Button variant='primary' className='ms-3' onClick={infoStatus}>info</Button>
             </div>
             </th>
             <th className='p-4' style={{ width: 80 }}>{course.category}</th>
-            <th className='p-4' style={{ width: 800 }}>{course.description}</th>
-            <th style={{ justifyContent: 'center', display: 'flex', height: 200, alignItems: 'center' }}>
+            <th className='p-4' style={{ width: 400 }}>{course.description}</th>
+            <th style={{ justifyContent: 'center', display: 'flex', height: 160, alignItems: 'center' }}>
               <div>
-                <Button style={{ width: 100 }} variant="primary" onClick={handleToggleFavorite}>
+                <Button style={{ width: 90 }} variant="primary" onClick={handleToggleFavorite}>
                   {course.favorite ? 'Unfavorite' : 'Favorite'}
                 </Button>
-                <Button className='m-5' style={{ width: 100 }} variant="primary" onClick={handleDelete}>
+                <Button className='m-3' style={{ width: 90 }} variant="primary" onClick={handleDelete}>
                   Delete
                 </Button>
-                <Button style={{ width: 100 }} variant="primary" onClick={showElement}>
+                <Button style={{ width: 90 }} variant="primary" onClick={showElement}>
                   Edit
                 </Button>
               </div>
             </th>
+            <th style={{width: 90}}>{course.startDay}</th>
+            <th style={{width: 90}}>{course.endDay}</th>
+            <th style={{width: 90}}><CircularProgressbar value={(course.tasks.filter((a)=> a.completed).length / Number(course.length).toFixed(2))*100} text={`${(course.tasks.filter((a)=>a.completed).length / Number(course.length).toFixed(2))*100}%`} /></th>
           </tr>
         </tbody>
       </Table>
