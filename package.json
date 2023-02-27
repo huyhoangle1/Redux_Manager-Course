@@ -11,6 +11,7 @@
     "server": "json-server --watch public/courses.json --port 3001"
   },
   "dependencies": {
+    "antd": "^5.2.2",
     "axios": "^1.3.3",
     "base-64": "^1.0.0",
     "bootstrap": "^5.2.3",
