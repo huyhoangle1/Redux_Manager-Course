@@ -15,7 +15,7 @@ const AdminDashboard = () => {
   return (
     <div>
       {/* <!-- Dashboard --> */}
-      <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary" style={{color:'GrayText'}}>
+      <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
         {/* <!-- Vertical Navbar --> */}
         <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
           <div class="container-fluid">
@@ -50,6 +50,7 @@ const AdminDashboard = () => {
             </div>
             {/* <!-- Collapse --> */}
             <div class="collapse navbar-collapse" id="sidebarCollapse">
+              <h4>Main Menu</h4>
               {/* <!-- Navigation --> */}
               <ul class="navbar-nav">
                 <li class="nav-item">
@@ -158,8 +159,14 @@ const AdminDashboard = () => {
               {/* <!-- User (md) --> */}
               <ul class="navbar-nav">
                 <li class="nav-item">
+                <h4>Setting</h4>
                   <a class="nav-link" href="#">
-                    <i class="bi bi-person-square"></i> Account
+                  <i class="bi bi-patch-exclamation-fill"></i>Help
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="bi bi-tools"></i>Settings
                   </a>
                 </li>
                 <li class="nav-item">
@@ -175,7 +182,7 @@ const AdminDashboard = () => {
         <div class="h-screen flex-grow-1 overflow-y-lg-auto">
           {/* <!-- Header --> */}
           {/* <!-- Main --> */}
-          <main class="py-6 bg-surface-secondary">
+          <main class=" bg-surface-secondary">
           <Header />
           <BrowserRouter>
             <Routes>

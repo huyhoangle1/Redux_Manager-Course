@@ -6,3 +6,23 @@
 
 /* Bootstrap Icons */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+
+nav#navbarVertical {
+    background-color: #263ab5 !important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #fdfdfd;
+}
+h4{
+    color: #fdfdfd;
+}
+
+.navbar-vertical.navbar-light .navbar-nav .nav-link i, .navbar-vertical.navbar-light .navbar-nav .nav-link svg {
+    color: #fdfdfd;
+}
+
+.navbar-light .navbar-brand{
+    color: #fdfdfd;
+}
+

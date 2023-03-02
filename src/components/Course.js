@@ -46,7 +46,7 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
           </tr>
         </thead>
         <tbody>
-          <tr style={{height:150}}>
+          <tr>
             <th>
             <div style={{ textAlign: 'center', width: 150, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <img src={course.imagepath} alt={course.title} style={{ width: '20px', height: '20px', objectFit: 'cover', marginRight:"10px" }} />
@@ -55,13 +55,13 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
             </div>
             </th>
             <th className='p-4' style={{ width: 80 }}>{course.category}</th>
-            <th className='p-4' style={{ width: 400 }}>{course.description}</th>
-            <th style={{ justifyContent: 'center', display: 'flex', height: 160, alignItems: 'center' }}>
+            <th className='p-4' style={{ maxWidth: 300, textOverflow: 'ellipsis', overflow:'hidden', whiteSpace:'nowrap',WebkitLineClamp:3 }}>{course.description}</th>
+            <th style={{ justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
               <div>
-                <Button style={{ width: 90 }} variant="primary" onClick={handleToggleFavorite}>
+                <Button style={{ width: 100 }} variant="primary" onClick={handleToggleFavorite}>
                   {course.favorite ? 'Unfavorite' : 'Favorite'}
                 </Button>
-                <Button className='m-3' style={{ width: 90 }} variant="primary" onClick={handleDelete}>
+                <Button className='m-4' style={{ width: 90 }} variant="primary" onClick={handleDelete}>
                   Delete
                 </Button>
                 <Button style={{ width: 90 }} variant="primary" onClick={showElement}>
