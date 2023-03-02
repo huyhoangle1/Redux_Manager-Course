@@ -71,7 +71,7 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
             </th>
             <th style={{width: 90}}>{course.startDay}</th>
             <th style={{width: 90}}>{course.endDay}</th>
-            <th style={{width: 90}}><CircularProgressbar value={(course.tasks.filter((a)=> a.completed).length / Number(course.length).toFixed(2))*100} text={`${(course.tasks.filter((a)=>a.completed).length / Number(course.length).toFixed(2))*100}%`} /></th>
+            <th style={{width: 90}}><CircularProgressbar value={((Number(course.tasks.filter((a)=> a.completed).length) / Number(course.length)).toFixed(2))*100} text={`${((Number(course.tasks.filter((a)=> a.completed).length) / Number(course.length)).toFixed(2))*100}%`} /></th>
           </tr>
         </tbody>
       </Table>
