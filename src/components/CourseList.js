@@ -31,7 +31,7 @@ const CourseList = () => {
 
   const renderCourses = () => {
     if (courses.length === 0) {
-      return <h3 style={{textAlign: 'center', color: 'red'}}>No courses found.</h3>
+      return (<h3 style={{textAlign: 'center', color: 'red'}}>No courses found.</h3>)
     } else {
       return courses.map(course => (
         <div key={course.id}>

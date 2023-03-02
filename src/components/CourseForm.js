@@ -98,23 +98,23 @@ const CourseForm = () => {
     <Form onSubmit={handleSubmit}>
       <h2 style={{ textAlign: 'center', marginTop: 30 }}>Add Course</h2>
       <Form.Group className="mb-3 mx-5">
-        <Form.Label type="title"><h4>Course Title:</h4></Form.Label>
+        <Form.Label type="title"><h3>Course Title:</h3></Form.Label>
         <Form.Control required value={title} id="title" type="text" onChange={handleTitleChange} placeholder="Input Title" />
       </Form.Group>
       <Form.Group className="mb-3 mx-5">
-        <Form.Label><h4>Category:</h4></Form.Label>
+        <Form.Label><h3>Category:</h3></Form.Label>
         <Form.Control required value={category} id="category" type="text" onChange={handleCategoryChange} placeholder="Input category" />
       </Form.Group>
       <Form.Group className="mb-3 mx-5">
-        <Form.Label><h4>Description</h4></Form.Label>
+        <Form.Label><h3>Description</h3></Form.Label>
         <Form.Control required value={description} id="description" type="text" onChange={handleDescriptionChange} placeholder="Input description" />
       </Form.Group>
       <Form.Group className="mb-3 mx-5">
-        <Form.Label><h4>Start Day</h4></Form.Label>
+        <Form.Label><h3>Start Day</h3></Form.Label>
         <Form.Control required value={startDay} id="description" type="date" onChange={handleStartDay} placeholder="Input Start Day" />
       </Form.Group>
       <Form.Group className="mb-3 mx-5">
-        <Form.Label><h4>End Day</h4></Form.Label>
+        <Form.Label><h3>End Day</h3></Form.Label>
         <Form.Control required value={endDay} id="description" type="date" onChange={handleEndDay} placeholder="Input End Day" />
       </Form.Group>
       <Form.Group controlId="formFileSm" className="mb-3 mx-5">
@@ -122,7 +122,7 @@ const CourseForm = () => {
         <Form.Control type="file" accept='.jpg, .png, .jpeg' onChange={onChangeImage} size="sm" />
       </Form.Group>
       <Form.Group className="mb-3 mx-5">
-        <Form.Label><h4>Exercise Title:</h4></Form.Label>
+        <Form.Label><h3>Exercise Title:</h3></Form.Label>
         <Form.Control value={exerciseTitle} id="exerciseTitle" type="text" onChange={handleExerciseTitleChange} placeholder="Input exercise title" />
       </Form.Group>
       <div className='d-flex justify-content-center'>

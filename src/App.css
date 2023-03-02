@@ -13,9 +13,11 @@ nav#navbarVertical {
 }
 .navbar-light .navbar-nav .nav-link {
     color: #fdfdfd;
+    margin-left: 5px;
 }
 h4{
     color: #fdfdfd;
+    margin-left: 3px;
 }
 
 .navbar-vertical.navbar-light .navbar-nav .nav-link i, .navbar-vertical.navbar-light .navbar-nav .nav-link svg {
@@ -24,5 +26,20 @@ h4{
 
 .navbar-light .navbar-brand{
     color: #fdfdfd;
+}
+
+.navbar-vertical.navbar-light .navbar-nav>.nav-item>.nav-link:hover {
+    background-color: aqua;
+}
+
+.navbar-vertical.navbar-light .navbar-nav>.nav-item>.nav-link>.Course:hover {
+   color: #263ab5;
+}
+
+@media (min-width: 992px)
+{
+    .border-end-lg {
+        border-right-width: 0px !important;
+    }
 }
 
