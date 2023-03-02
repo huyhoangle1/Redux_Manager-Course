@@ -50,7 +50,7 @@ const CourseList = () => {
     <div>
       <h2 className='mb-5 mt-5' style={{ textAlign: 'center', color: 'violet' }}>All Courses</h2>
       {renderCourses()}
-      <Button variant="outline-primary" ><Link to="/add">Add Course</Link></Button>
+      <Button variant="outline-primary"  style={{marginLeft:15}}><Link to="/add">Add Course</Link></Button>
     </div>
   );
 };
