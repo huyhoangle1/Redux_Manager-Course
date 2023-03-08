@@ -13,6 +13,7 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
   const [showModal, isShowModal] = useState(false);
   const handleDelete = () => {
     onDelete(course.id);
+    alert(`Delete successfully Course id:  ${course.id}`);
   };
 
   const showElement = () => {

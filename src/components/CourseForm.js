@@ -125,7 +125,7 @@ const CourseForm = () => {
       setCategory('');
       setDescription('');
       setImagePath('');
-      alert('success');
+      alert('Add successfully');
       history('/')
     }
   };

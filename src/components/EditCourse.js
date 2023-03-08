@@ -18,6 +18,7 @@ const EditCourse = ({ course, isShow, show }) => {
     e.preventDefault();
     const updatedCourse = { title, category, description };
     dispatch(editCourse(course.id, updatedCourse));
+    alert('update successfully')
     isShow(false);
   };
 

@@ -20,6 +20,7 @@ const EditExercisesModel = ({ courseTasks, showExercisesModal, isExercisesShowMo
     };
     const updatedCourseTask = { ...courseTasks, ...updates };
     dispatch(editExercise(course.id, courseTasks.id, updatedCourseTask));
+    alert('Edit successfully');
     handleClose();
   };
 
