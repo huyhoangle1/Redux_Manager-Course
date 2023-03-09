@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
-import EditExercisesModel from "./EditExercisesModel";
+import EditExercisesModel from "./EditExercisesModal";
 import { useDispatch } from "react-redux";
 import { exerciseStatus } from "../../actions/courseAction";
 

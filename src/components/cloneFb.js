@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import CreatePostFbModel from './Models/CreatePostFbModel';
+import CreatePostFbModel from './Modals/CreatePostFbModal';
 
 
 const CloneFb = () => {
