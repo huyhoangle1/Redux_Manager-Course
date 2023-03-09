@@ -13,7 +13,8 @@ const CreatePostFbModel = ({ showModal, isShowModal }) => {
   
   // Hàm focus vào component khi click vào custom-editor
   const focus = () => {
-    console.log(editorState)
+    const content = editorState.getCurrentContent().getPlainText(); // lấy text input trong editor
+    console.log(content);
     editorRef.current.focus();
   }
 
@@ -54,7 +55,7 @@ const CreatePostFbModel = ({ showModal, isShowModal }) => {
                 </div>
 
                 {/* Component Editor */}
-                <div className="custom-editor" onClick={focus}>
+                <div className="custom-editor">
                   <Editor
                     placeholder="Hoàng ơi, Bạn đang nghĩ gì thế?"
                     ref={editorRef} // Gán reference vào component Editor
@@ -77,7 +78,7 @@ const CreatePostFbModel = ({ showModal, isShowModal }) => {
                     <li><img src="./img/more.svg" alt="" /></li>
                   </ul>
                 </div>
-                <button>Post</button>
+                <button onClick={focus}>Post</button>
               </form>
             </section>
           </div>
