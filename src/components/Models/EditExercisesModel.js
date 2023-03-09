@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { editExercise } from "../actions/courseAction";
+import { editExercise } from "../../actions/courseAction";
 
 const EditExercisesModel = ({ courseTasks, showExercisesModal, isExercisesShowModal, course }) => {
   const [title, setTitle] = useState(courseTasks?.title);

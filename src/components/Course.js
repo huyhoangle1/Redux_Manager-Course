@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import EditCourse from './EditCourse';
 import { editCourse } from '../actions/courseAction';
-import InfoModel from './InfoModel';
+import InfoModel from './Models/InfoModel';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 

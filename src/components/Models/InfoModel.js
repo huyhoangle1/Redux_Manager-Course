@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import EditExercisesModel from "./EditExercisesModel";
 import { useDispatch } from "react-redux";
-import { exerciseStatus } from "../actions/courseAction";
+import { exerciseStatus } from "../../actions/courseAction";
 
 const InfoModel = ({ course, showModal, isShowModal }) => {
   const dispatch = useDispatch();
@@ -52,8 +52,8 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Course Name: {course.title}</h4>
-          <p>Course Description: {course.description}</p>
+          <h4>Course Name: {course?.title}</h4>
+          <p>Course Description: {course?.description}</p>
           <h2>Exercise List:</h2>
           <Table>
             <thead>
@@ -65,7 +65,7 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
               </tr>
             </thead>
             <tbody>
-              {course.tasks?.map((item, index) => (
+              {course?.tasks?.map((item, index) => (
                 <tr style={{ textAlign: "center" }} className="number">
                   <td>{item?.id}</td>
                   <td>{item?.title}</td>

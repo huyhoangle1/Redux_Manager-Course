@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/layouts/header/header';
 import FavoriteList from './components/favoriteList';
+import CloneFb from './components/cloneFb';
 
 const AdminDashboard = () => {
   const courses = useSelector(state => state.courses);
@@ -75,8 +76,8 @@ const AdminDashboard = () => {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <i class="bi bi-people"></i> Users
+                  <a class="nav-link" href="/cloneFb">
+                    <i class="bi bi-people"></i> Clone FaceBook
                   </a>
                 </li>
               </ul>
@@ -190,6 +191,7 @@ const AdminDashboard = () => {
               <Route path="/Add" element={<CourseForm />} />
               <Route path="/search" element={<SearchBar />} />
               <Route path="/myfavorite" element={<FavoriteList />} />
+              <Route path="/cloneFb" element={<CloneFb />} />
             </Routes>
           </BrowserRouter>
           </main>

@@ -11,20 +11,24 @@
 nav#navbarVertical {
     background-color: #263ab5 !important;
 }
+
 .navbar-light .navbar-nav .nav-link {
     color: #fdfdfd;
     margin-left: 5px;
+    font-size: 1.2rem;
 }
-h4{
+
+h4 {
     color: #fdfdfd;
     margin-left: 3px;
 }
 
-.navbar-vertical.navbar-light .navbar-nav .nav-link i, .navbar-vertical.navbar-light .navbar-nav .nav-link svg {
+.navbar-vertical.navbar-light .navbar-nav .nav-link i,
+.navbar-vertical.navbar-light .navbar-nav .nav-link svg {
     color: #fdfdfd;
 }
 
-.navbar-light .navbar-brand{
+.navbar-light .navbar-brand {
     color: #fdfdfd;
 }
 
@@ -33,13 +37,195 @@ h4{
 }
 
 .navbar-vertical.navbar-light .navbar-nav>.nav-item>.nav-link>.Course:hover {
-   color: #263ab5;
+    color: #263ab5;
 }
 
-@media (min-width: 992px)
-{
+.body-modal .container {
+    width: 500px;
+    height: 480px;
+    overflow: hidden;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 12px 28pxrgba (0, 0, 0, 0.12);
+    transition: heigh 0.2s ease;
+}
+
+/* Slider */
+.body-modal .container .wrapper {
+    display: flex;
+    width: 1000px;
+}
+
+.body-modal .container section {
+    width: 500px;
+    background: #fff;
+}
+
+.body-modal .container .post {
+    transition: margin-left 0.18s ease;
+}
+
+.body-modal .container.active .post {
+    margin-left: -500px;
+}
+
+.body-modal .container.active {
+    height: 490px;
+}
+
+.body-modal .container .audience {
+    opacity: 0;
+    transition: opacity 0.12s ease;
+}
+
+.body-modal .container.active .audience {
+    opacity: 1;
+}
+
+/* Post */
+.body-modal .post header {
+    font-size: 22px;
+    text-align: center;
+    font-weight: 600;
+    padding: 17px 0;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.body-modal .post form {
+    margin: 20px 25px;
+}
+
+.body-modal .post form :where(.content, .details .privacy) {
+    display: flex;
+    align-items: center;
+}
+
+.body-modal .post form .content img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.body-modal .post form .content .details {
+    margin: -3px 0 0 12px;
+}
+
+.body-modal form .content .details p {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.body-modal form .content .details .privacy {
+    cursor: pointer;
+    width: 98px;
+    font-size: 12px;
+    padding: 0 10px;
+    margin-top: 3px;
+    border-radius: 5px;
+    background: #e4e6eb;
+    justify-content: space-between;
+}
+
+.body-modal .details .privacy span {
+    font-size: 13px;
+    margin-top: 1px;
+    font-weight: 500;
+}
+
+.body-modal .details .privacy i:last-child {
+    font-size: 13px;
+    margin-left: 1px;
+}
+
+.body-modal .post form :where(textarea, button) {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.body-modal .post form textarea {
+    display: block;
+    resize: none;
+    font-size: 18px;
+    margin-top: 30px;
+    min-height: 100px;
+}
+
+.body-modal .post form :where(.theme-emoji, .options) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.body-modal .post form .theme-emoji img {
+    cursor: pointer;
+}
+
+.body-modal form .options {
+    height: 57px;
+    border-radius: 7px;
+    padding: 0 15px;
+    margin: 15px 0;
+    border: 1px solid #b9b9b9;
+}
+
+.body-modal form .options p {
+    color: #595959;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.body-modal form .options :where(.list, li) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.body-modal form .options .list li {
+    list-style: style none;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+}
+
+.body-modal form .list li:hover {
+    background: #f0f1f4;
+}
+
+.body-modal form .list li img {
+    cursor: pointer;
+}
+
+.body-modal form button {
+    height: 53px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 7px;
+    color: #bcc0c4;
+    cursor: no-drop;
+    background: #e2e5e9;
+}
+
+.body-modal form textarea:valid~button {
+    color: #fff;
+    cursor: pointer;
+    background: #4599ff;
+}
+
+.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr {
+    margin-top: 10px;
+    height: 100px;
+}
+
+.public-DraftEditorPlaceholder-root {
+    font-size: 15px;
+}
+.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr span{
+    font-size: 15px;
+}
+
+@media (min-width: 992px) {
     .border-end-lg {
         border-right-width: 0px !important;
     }
 }
-

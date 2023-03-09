@@ -1,0 +1,8 @@
+.my-modal .modal-dialog {
+    width: 500px;
+    height: 500px;
+  }
+  .my-modal .modal-body {
+    height: 400px;
+  }
+  
