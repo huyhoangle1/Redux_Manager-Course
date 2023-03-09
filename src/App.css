@@ -106,6 +106,10 @@ h4 {
     border-radius: 50%;
 }
 
+.body-modal .post form .content {
+    margin-bottom: 10px;
+}
+
 .body-modal .post form .content .details {
     margin: -3px 0 0 12px;
 }
@@ -212,17 +216,20 @@ h4 {
     background: #4599ff;
 }
 
-.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr {
-    margin-top: 10px;
-    height: 100px;
-}
+.custom-editor {
+    min-height: 100px;
+    max-height: 100px;
+    overflow: auto; /* this will enable scrolling if the content exceeds the max-height */
+    /* margin-top: 10px; */
+  }
+  
 
 .public-DraftEditorPlaceholder-root {
     font-size: 15px;
 }
 .public-DraftStyleDefault-block.public-DraftStyleDefault-ltr span{
     font-size: 15px;
-}
+} 
 
 @media (min-width: 992px) {
     .border-end-lg {
