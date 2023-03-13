@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import CreatePostFbModel from './Modals/CreatePostFbModal';
 
-
 const CloneFb = () => {
     const [showModel, setShowModel] = useState(false);
     const openModel =()=>{
@@ -1033,7 +1032,6 @@ const CloneFb = () => {
                 </div>
             </div>
             <div>
-               <Button>{showModel}</Button> 
             {
           showModel ?
             <CreatePostFbModel
