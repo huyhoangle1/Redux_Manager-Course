@@ -1,13 +1,150 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { editExercise } from "../../actions/courseAction";
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
-const EmojiModal = ({showModalEmoji, setShowModalEmoji}) => {
+const EmojiModal = ({ showModalEmoji, setShowModalEmoji }) => {
 
-    const handleClose =()=>{
-        setShowModalEmoji(false);
-    }
+  const icoins = [
+    {
+      id: 1,
+      name: "Like",
+      icon: "👍",
+      count: 100
+    },
+    {
+      id: 2,
+      name: "Love",
+      icon: "❤️️",
+      count: 50
+    },
+    {
+      id: 3,
+      name: "Haha",
+      icon: "😂",
+      count: 30
+    },
+    {
+      id: 4,
+      name: "Wow",
+      icon: "😮",
+      count: 10
+    },
+    {
+      id: 5,
+      name: "Sad",
+      icon: "😢",
+      count: 5
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+    {
+      id: 6,
+      name: "Angry",
+      icon: "😡",
+      count: 2
+    },
+
+
+  ];
+
+  const handleClose = () => {
+    setShowModalEmoji(false);
+  }
 
   return (
     <div>
@@ -20,47 +157,54 @@ const EmojiModal = ({showModalEmoji, setShowModalEmoji}) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" className="modal-title w-100 text-center">
-            Tạo Bài Viết
+            Bạn đang cảm thấy thế nào?
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div class="body-modal">
-            <section class="post">
-              <form action="#">
-                <div class="content">
-                  <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
-                  <div class="details">
-                    <p>Hoàng Lê</p>
-                    <div class="privacy">
-                      <i class="fas fa-user-friends"></i>
-                      <span>Friends</span>
-                      <i class="fas fa-caret-down"></i>
+          <div className="tab-emoji">
+            <Tabs
+              defaultActiveKey="home"
+              transition={false}
+              id="noanim-tab-example"
+              className="mb-3"
+            >
+              <Tab eventKey="home" title="Cảm xúc">
+                <div className="row-feeling-container">
+                <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm" />
+                  <div class="row-feeling" id="style-1">
+                    <div class="row row-cols-2">
+                      {icoins.map((item) => (
+                        <div class="col">
+                          <div class="column-feeling">
+                            <div className="emoji">{item.icon}</div>
+                            <span>{item.name}</span>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-
-                {/* Component Editor */}
-                <div className="custom-editor">
+              </Tab>
+              <Tab eventKey="profile" title="Hoạt Động">
+              <div className="row-activity-container">
+                <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm" />
+                  <div class="row-activity" id="style-1">
+                    <div class="row">
+                      {icoins.map((item) => (
+                          <div class="column-activity">
+                            <div className="emoji">{item.icon}</div>
+                            <span>{item.name}</span>
+                            <i class="fa fa-arrow-right"></i>
+                          </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-
-                <div class="theme-emoji">
-                  <img src="./img/theme.svg" alt="" />
-                  <img src="./img/smile.svg" alt="" />
-                </div>
-                <div class="options">
-                  <p>Thêm vào bài viết của bạn</p>
-                  <ul class="list">
-                    <li><img src="./img/gallery.svg" alt="" /></li>
-                    <li><img src="./img/tag.svg" alt="" /></li>
-                    <li><img src="./img/emoji.svg" alt="" /></li>
-                    <li><img src="./img/mic.svg" alt="" /></li>
-                    <li><img src="./img/more.svg" alt="" /></li>
-                  </ul>
-                </div>
-                <button onClick={focus}>Post</button>
-              </form>
-            </section>
+              </Tab>
+            </Tabs>
           </div>
+
+
         </Modal.Body>
       </Modal>
     </div>

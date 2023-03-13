@@ -65,22 +65,25 @@ const FriendsModal = ({showModalFriends, setShowModalFriends}) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" className="modal-title w-100 text-center">
-            Gán thẻ người khác
+              Gắn thẻ người khác
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="header-model-input-style">
+          <i class="fa fa-search"></i>
           <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm bạn bè" />
             <span className="lblDone">Xong</span>
           </div>
-          <div>GỢI Ý</div>
-          <div>
+          <div className="friends-list-container">
+          <div className="suggest">GỢI Ý</div>
+          <div className="friends-list" id="style-1">
           {friends.map((item)=>
-            <div key={item.id} className="friends-list">
-                 <img src={item.avatar} alt={item.name} />
-                <div>{item.name}</div>
+            <div key={item.id} className="info-friends">
+                <img src={item.avatar} alt={item.name} />
+                <span>{item.name}</span>
             </div>
           )}
+          </div>
           </div>
         </Modal.Body>
       </Modal>

@@ -226,16 +226,36 @@ h4 {
     display: flex;
     margin: 0px;
 }
+
+.header-model-input-style .form-control-lg {
+    min-height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem 1rem;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    padding-left: 40px;
+}
 .header-model-input-style span{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-left: 10px;
     color: #216FDB;
-    font-size: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
-  
-  
+
+  i.fa.fa-search {
+    position: absolute;
+    top: 20px;
+    left: 22px;
+    font-size: 15px; /* Set the font-size to 24 pixels */
+}
+
+div#contained-modal-title-vcenter {
+    color: #050505;
+    font-size: 2.25rem;
+    font-weight: 700;
+}
 
 .public-DraftEditorPlaceholder-root {
     font-size: 15px;
@@ -243,6 +263,195 @@ h4 {
 .public-DraftStyleDefault-block.public-DraftStyleDefault-ltr span{
     font-size: 15px;
 } 
+
+/* friends  */
+
+.friends-list-container{
+    height: 300px;
+    cursor: pointer;
+    font-family: inherit;
+}
+.friends-list-container .suggest{
+    font-size: small;
+    margin: 15px 0px 5px 10px;
+    color: #65676B;
+    font-weight: 600;
+}
+.friends-list{
+    height: 100%;
+    overflow-y: hidden; 
+}
+
+.friends-list:hover{
+    height: 100%;
+    overflow-y: auto; 
+}
+#style-1::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #CED0D4;
+}
+
+.friends-list .info-friends img {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+.friends-list .info-friends {
+    display: flex;
+    padding: 10px;
+}
+.friends-list .info-friends span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.friends-list .info-friends:hover {
+   background-color: #CFD1D5;
+}
+
+
+/* tabs */
+.nav-tabs .nav-link {
+    padding: 1.25rem 30px;
+    font-size: 15px;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: #CCCCCC;
+}
+
+.nav-tabs{
+    border: none !important;
+}
+
+
+.nav-tabs .nav-link.active{
+    color:  hsl(214, 89%, 52%) !important;
+    background-color:#fff !important;
+    border-top: #fff !important;
+    border-right: #fff !important;
+    border-left: #fff !important;
+    border-bottom: 5px solid hsl(214, 89%, 52%) !important;
+}
+
+/* // feeling */
+.row-feeling-container{
+    height: 290px;
+}
+
+.row-feeling {
+    margin-left: 20%;
+    height: 100%;
+    overflow-x: hidden; 
+    /* overflow-y: hidden;  */
+  }
+  .row-feeling::-webkit-scrollbar { 
+    width: 0 !important;
+    display: none; 
+  }
+  .row-feeling:hover{
+    height: 100%;
+    overflow-y: auto; 
+}
+  
+
+.row-feeling .column-feeling{
+    display: flex;
+    margin-top: 20px;
+}
+
+.row-feeling .column-feeling span{
+    margin-left: 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-feeling .column-feeling .emoji{
+    align-items: center;
+    width: 40px;
+    justify-content: center;
+    font-size: 13px;
+    border: 1px solid #fff;
+    background-color: #E4E6EB;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* activity */
+.row-activity-container{
+    height: 290px;
+}
+
+.row-activity {
+    margin-left: 18px;
+    height: 100%;
+    overflow-x: hidden; 
+    /* overflow-y: hidden;  */
+  }
+  .row-activity::-webkit-scrollbar { 
+    width: 0 !important;
+    display: none; 
+  }
+  .row-activity:hover{
+    height: 100%;
+    overflow-y: auto; 
+}
+  
+
+.row-activity .column-activity{
+    display: flex;
+    padding: 5px;
+    margin-left: 15px;
+    margin-top: 20px;
+}
+
+.row-activity .column-activity:hover{
+   background-color: #CFD1D5;
+   border-radius: 5px;
+}
+
+.row-activity .column-activity span{
+    margin-left: 10px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-activity .column-activit .fa-arrow-right{
+    font-size: 20px;
+}
+
+.row-activity .column-activity .emoji{
+    align-items: center;
+    width: 40px;
+    justify-content: center;
+    font-size: 13px;
+    border: 1px solid #fff;
+    background-color: #E4E6EB;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+
+
+
+
+
 
 
 @media (min-width: 992px) {

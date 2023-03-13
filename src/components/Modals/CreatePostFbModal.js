@@ -19,7 +19,7 @@ const CreatePostFbModel = ({ showModal, isShowModal }) => {
 
     const handleOpenModalFriends = () => {
       setShowModalFriends(true);
-      isShowModal(false)
+      // isShowModal(false)
     };
 
     const handleOpenModalEmoji  = () => {
