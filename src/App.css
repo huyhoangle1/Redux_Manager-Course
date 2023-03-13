@@ -222,6 +222,19 @@ h4 {
     overflow: auto; /* this will enable scrolling if the content exceeds the max-height */
     /* margin-top: 10px; */
   }
+  .header-model-input-style {
+    display: flex;
+    margin: 0px;
+}
+.header-model-input-style span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    color: #216FDB;
+    font-size: 1rem;
+}
+  
   
 
 .public-DraftEditorPlaceholder-root {
@@ -230,6 +243,7 @@ h4 {
 .public-DraftStyleDefault-block.public-DraftStyleDefault-ltr span{
     font-size: 15px;
 } 
+
 
 @media (min-width: 992px) {
     .border-end-lg {

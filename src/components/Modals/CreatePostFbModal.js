@@ -2,9 +2,32 @@ import React, { useEffect, useState, useRef } from "react";
 import { Button, Modal } from "react-bootstrap";
 import "./style.css";
 import { Editor, EditorState } from 'draft-js';
+import FriendsModal from "./FriendsModal";
+import EmojiModal from "./EmojiModal";
 import "draft-js/dist/Draft.css";
 
 const CreatePostFbModel = ({ showModal, isShowModal }) => {
+  const [showModalFriends, setShowModalFriends] = useState(false);
+  const [showModalEmoji, setShowModalEmoji] = useState(false);
+
+    // Hàm đóng Modal
+    const handleClose = () => {
+      isShowModal(false);
+      setEditorState(EditorState.createEmpty()); // Reset lại EditorState khi đóng Modal
+    };
+
+
+    const handleOpenModalFriends = () => {
+      setShowModalFriends(true);
+      isShowModal(false)
+    };
+
+    const handleOpenModalEmoji  = () => {
+      setShowModalEmoji(true);
+    };
+  
+
+
 
   const editorRef = useRef(); // tạo reference để lấy DOM của component Editor
   const [editorState, setEditorState] = useState(
@@ -18,11 +41,6 @@ const CreatePostFbModel = ({ showModal, isShowModal }) => {
     editorRef.current.focus();
   }
 
-  // Hàm đóng Modal
-  const handleClose = () => {
-    isShowModal(false);
-    setEditorState(EditorState.createEmpty()); // Reset lại EditorState khi đóng Modal
-  };
 
   return (
     <div>
@@ -72,8 +90,8 @@ const CreatePostFbModel = ({ showModal, isShowModal }) => {
                   <p>Thêm vào bài viết của bạn</p>
                   <ul class="list">
                     <li><img src="./img/gallery.svg" alt="" /></li>
-                    <li><img src="./img/tag.svg" alt="" /></li>
-                    <li><img src="./img/emoji.svg" alt="" /></li>
+                    <li onClick={handleOpenModalFriends}><img src="./img/tag.svg" alt="" /></li>
+                    <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
                     <li><img src="./img/mic.svg" alt="" /></li>
                     <li><img src="./img/more.svg" alt="" /></li>
                   </ul>
@@ -84,6 +102,18 @@ const CreatePostFbModel = ({ showModal, isShowModal }) => {
           </div>
         </Modal.Body>
       </Modal>
+      {showModalFriends ? (
+            <FriendsModal
+              showModalFriends={showModalFriends}
+              setShowModalFriends={setShowModalFriends}
+            />
+          ) : null}
+      {showModalEmoji ? (
+            <EmojiModal
+              showModalEmoji={showModalEmoji}
+              setShowModalEmoji={setShowModalEmoji}
+            />
+          ) : null}
     </div>
   );
 };

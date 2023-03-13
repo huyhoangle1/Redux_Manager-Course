@@ -1033,13 +1033,14 @@ const CloneFb = () => {
                 </div>
             </div>
             <div>
+               <Button>{showModel}</Button> 
             {
           showModel ?
             <CreatePostFbModel
               showModal={showModel}
               isShowModal={setShowModel}
             /> :
-            <div></div>
+           null
         }
       </div>
 
