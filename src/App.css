@@ -267,7 +267,7 @@ div#contained-modal-title-vcenter {
 /* friends  */
 
 .friends-list-container{
-    height: 350px;
+    height: 310px;
     cursor: pointer;
     font-family: inherit;
 }
@@ -449,7 +449,19 @@ div#contained-modal-title-vcenter {
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 350px;
+    left: 380px;
+}
+
+.row-activity .column-activity-fa .column-activity .emoji{
+    align-items: center;
+    width: 40px;
+    justify-content: center;
+    font-size: 13px;
+    border: 1px solid #fff;
+    background-color: #E4E6EB;
+    border-radius: 50%;
+    padding: 10px;
+    margin-left: 10px;
 }
 
 /* Check in */
@@ -552,8 +564,10 @@ div#contained-modal-title-vcenter {
 }
 
 .event-container .body-create-event .list-event .img-event:hover{
-    background-color: #b9b9b9;
+    background-color: #f2f2f2;
+    border-radius: 5px;
 }
+
 
 
 @media (min-width: 992px) {

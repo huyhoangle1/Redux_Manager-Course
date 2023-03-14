@@ -9,7 +9,7 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
     {
       id: 1,
       name: "Like",
-      icon: "👍",
+      icon: "❤️",
       count: 100
     },
     {
