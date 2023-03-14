@@ -3,8 +3,22 @@ import { Modal } from "react-bootstrap";
 import "./style.css";
 import { Editor, EditorState } from 'draft-js';
 import "draft-js/dist/Draft.css";
+import createImagePlugin from 'draft-js-image-plugin';
+import Dropzone from 'react-dropzone';
 
 const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions, setShowModalEvent }) => {
+  const [statusImage, setStatusImage] = useState(false);
+  const [files, setFiles] = useState([]);
+  const imagePlugin = createImagePlugin();
+  const editorRef = useRef(); // tạo reference để lấy DOM của component Editor
+  const [editorState, setEditorState] = useState(
+    () => EditorState.createEmpty(), // Khởi tạo EditorState với nội dung rỗng
+  );
+
+  const handleDrop = (acceptedFiles) => {
+    // Add code to handle file upload here
+    setFiles(acceptedFiles);
+  }
 
 
   // Hàm đóng Modal
@@ -17,6 +31,10 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
     setShowModalOptions(true);
     closeModel()
   };
+
+  const handleOpenChooseImage =()=>{
+    setStatusImage(true);
+  }
 
   const handleOpenModalEvent = () => {
     setShowModalEvent(true);
@@ -40,12 +58,6 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
   };
 
 
-
-
-  const editorRef = useRef(); // tạo reference để lấy DOM của component Editor
-  const [editorState, setEditorState] = useState(
-    () => EditorState.createEmpty(), // Khởi tạo EditorState với nội dung rỗng
-  );
 
   // Hàm focus vào component khi click vào custom-editor
   const focus = () => {
@@ -95,14 +107,31 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                   />
                 </div>
 
-                <div class="theme-emoji">
+                {statusImage == false ? ( <div class="theme-emoji">
                   <img src="./img/theme.svg" alt="" />
                   <img src="./img/smile.svg" alt="" />
-                </div>
+                </div>) : (
+                   <div>
+                   <Dropzone onDrop={handleDrop}>
+                     {({getRootProps, getInputProps}) => (
+                       <div {...getRootProps()}>
+                         <input {...getInputProps()} />
+                         <span>Thêm ảnh/video</span>
+                         <p>hoặc kéo và thả</p>
+                       </div>
+                     )}
+                   </Dropzone>
+                   <Editor
+                     editorState={editorState}
+                     onChange={(state) => setEditorState(state)}
+                     plugins={[imagePlugin]}
+                   />
+                 </div>
+                )} 
                 <div class="options">
                   <p onClick={handleOpenModalOptions}>Thêm vào bài viết của bạn</p>
                   <ul class="list">
-                    <li><img src="./img/gallery.svg" alt="" /></li>
+                    <li onClick={handleOpenChooseImage}><img src="./img/gallery.svg" alt="" /></li>
                     <li onClick={handleOpenModalFriends}><img src="./img/tag.svg" alt="" /></li>
                     <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
                     <li onClick={handleOpenModalCheckIn}><img src="./img/mic.svg" alt="" /></li>
