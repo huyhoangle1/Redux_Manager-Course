@@ -352,7 +352,7 @@ div#contained-modal-title-vcenter {
 }
 
 .row-feeling {
-    margin-left: 20%;
+    margin-left: 5%;
     height: 100%;
     overflow-x: hidden; 
     /* overflow-y: hidden;  */
@@ -370,6 +370,12 @@ div#contained-modal-title-vcenter {
 .row-feeling .column-feeling{
     display: flex;
     margin-top: 20px;
+    padding: 5px;
+}
+
+.row-feeling .column-feeling:hover{
+    background-color: #bcc0c4;
+    border-radius: 20px;
 }
 
 .row-feeling .column-feeling span{
@@ -412,19 +418,23 @@ div#contained-modal-title-vcenter {
 }
   
 
-.row-activity .column-activity{
+.row-activity .column-activity-fa .column-activity{
     display: flex;
-    padding: 5px;
-    margin-left: 15px;
-    margin-top: 20px;
+    height: auto;
+    padding:15px 0px;
+    width: 100px;
 }
 
-.row-activity .column-activity:hover{
+.row-activity .column-activity-fa {
+    display: flex;
+}
+
+.row-activity .column-activity-fa:hover{
    background-color: #CFD1D5;
-   border-radius: 5px;
+   border-radius: 20px;
 }
 
-.row-activity .column-activity span{
+.row-activity .column-activity-fa .column-activity span{
     margin-left: 10px;
     font-size: 13px;
     display: flex;
@@ -432,11 +442,16 @@ div#contained-modal-title-vcenter {
     justify-content: center;
 }
 
-.row-activity .column-activit .fa-arrow-right{
-    font-size: 20px;
+.row-activity .column-activity-fa .fa-arrow-right{
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 290px;
 }
 
-.row-activity .column-activity .emoji{
+.row-activity .column-activity-fa .column-activity .emoji{
     align-items: center;
     width: 40px;
     justify-content: center;
@@ -445,10 +460,8 @@ div#contained-modal-title-vcenter {
     background-color: #E4E6EB;
     border-radius: 50%;
     padding: 10px;
+    margin-left: 10px;
 }
-
-
-
 
 
 

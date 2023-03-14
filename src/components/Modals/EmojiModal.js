@@ -191,10 +191,12 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji }) => {
                   <div class="row-activity" id="style-1">
                     <div class="row">
                       {icoins.map((item) => (
-                          <div class="column-activity">
-                            <div className="emoji">{item.icon}</div>
-                            <span>{item.name}</span>
-                            <i class="fa fa-arrow-right"></i>
+                          <div class="column-activity-fa">
+                            <div className="column-activity">
+                              <div className="emoji">{item.icon}</div>
+                              <span>{item.name}</span>
+                            </div>
+                              <i class="fa fa-arrow-right"></i>
                           </div>
                       ))}
                     </div>
@@ -203,8 +205,6 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji }) => {
               </Tab>
             </Tabs>
           </div>
-
-
         </Modal.Body>
       </Modal>
     </div>
