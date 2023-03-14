@@ -491,8 +491,23 @@ div#contained-modal-title-vcenter {
 .checkin-list-container .checkin-list .info-address .title-address span{
     font-size: 13px;
 }
+.options-modal{
+    display: flex;
+    list-style: none;
+    padding: 20px;
+}
+.options-modal:hover{
+    background-color: #b9b9b9;
+    border-radius: 8px;
+}
 
-
+.options-modal img{
+    margin-right: 20px;
+}
+.options-modal span{
+    font-size: 15px;
+    font-weight: 600;
+}
 
 
 

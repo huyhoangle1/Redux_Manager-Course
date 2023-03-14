@@ -3,7 +3,7 @@ import { Modal, Button, Form, InputGroup  } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { editExercise } from "../../actions/courseAction";
 
-const FriendsModal = ({showModalFriends, setShowModalFriends}) => {
+const FriendsModal = ({showModalFriends, setShowModalFriends, isShowModal}) => {
 
    const friends = [
     {
@@ -52,6 +52,7 @@ const FriendsModal = ({showModalFriends, setShowModalFriends}) => {
   
     const handleClose =()=>{
         setShowModalFriends(false);
+        isShowModal(true)
     }
 
   return (

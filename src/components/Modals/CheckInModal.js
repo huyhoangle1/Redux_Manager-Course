@@ -3,7 +3,7 @@ import { Modal, Button, Form, InputGroup  } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { editExercise } from "../../actions/courseAction";
 
-const CheckInModal = ({showModalCheckin, setShowModalCheckin}) => {
+const CheckInModal = ({showModalCheckin, setShowModalCheckin, isShowModal}) => {
 
    const MockDataCheckin = [
     {
@@ -98,6 +98,7 @@ const CheckInModal = ({showModalCheckin, setShowModalCheckin}) => {
   
     const handleClose =()=>{
         setShowModalCheckin(false);
+        isShowModal(true)
     }
 
   return (

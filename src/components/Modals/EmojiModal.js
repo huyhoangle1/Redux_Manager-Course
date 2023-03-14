@@ -3,7 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
-const EmojiModal = ({ showModalEmoji, setShowModalEmoji }) => {
+const EmojiModal = ({ showModalEmoji, setShowModalEmoji,isShowModal }) => {
 
   const icoins = [
     {
@@ -144,6 +144,7 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji }) => {
 
   const handleClose = () => {
     setShowModalEmoji(false);
+    isShowModal(true)
   }
 
   return (
