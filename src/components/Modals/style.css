@@ -3,6 +3,11 @@
     height: 500px;
   }
   .my-modal .modal-body {
-    height: 400px;
-  }
+    height: 443px;
+    width: 550px;
+}
+
+.modal-content {
+  width: 550px;
+}
   

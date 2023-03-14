@@ -5,16 +5,22 @@ import { Editor, EditorState } from 'draft-js';
 import FriendsModal from "./FriendsModal";
 import EmojiModal from "./EmojiModal";
 import "draft-js/dist/Draft.css";
+import CheckInModal from "./CheckInModal";
 
 const CreatePostFbModel = ({ showModal, isShowModal }) => {
   const [showModalFriends, setShowModalFriends] = useState(false);
   const [showModalEmoji, setShowModalEmoji] = useState(false);
+  const [showModalCheckin, setShowModalCheckin] = useState(false);
 
     // Hàm đóng Modal
     const handleClose = () => {
       isShowModal(false);
       setEditorState(EditorState.createEmpty()); // Reset lại EditorState khi đóng Modal
     };
+
+    const handleOpenModalCheckIn = () => {
+      setShowModalCheckin(true);
+    }
 
 
     const handleOpenModalFriends = () => {
@@ -92,6 +98,7 @@ const CreatePostFbModel = ({ showModal, isShowModal }) => {
                     <li><img src="./img/gallery.svg" alt="" /></li>
                     <li onClick={handleOpenModalFriends}><img src="./img/tag.svg" alt="" /></li>
                     <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
+                    <li onClick={handleOpenModalCheckIn}><img src="./img/mic.svg" alt="" /></li>
                     <li><img src="./img/mic.svg" alt="" /></li>
                     <li><img src="./img/more.svg" alt="" /></li>
                   </ul>
@@ -112,6 +119,12 @@ const CreatePostFbModel = ({ showModal, isShowModal }) => {
             <EmojiModal
               showModalEmoji={showModalEmoji}
               setShowModalEmoji={setShowModalEmoji}
+            />
+          ) : null}
+      {showModalCheckin ? (
+            <CheckInModal
+              showModalCheckin={showModalCheckin}
+              setShowModalCheckin={setShowModalCheckin}
             />
           ) : null}
     </div>

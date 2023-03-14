@@ -1023,6 +1023,9 @@ const CloneFb = () => {
                                     <div class="post-box__add-icon">
                                         <i  class="fas fa-ellipsis-h"></i>
                                     </div>
+                                    <div class="post-box__add-icon">
+                                        <i  class="fas fa-ellipsis-h"></i>
+                                    </div>
                                 </div>
                             </div>
                             <button class="post-box__btn btn-disable">Đăng</button>

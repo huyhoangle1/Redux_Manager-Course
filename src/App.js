@@ -26,7 +26,7 @@ const AdminDashboard = () => {
             </button>
             {/* <!-- Brand --> */}
             <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-0" href="#">
-                Course Management
+                <img src="https://preview.webpixels.io/web/img/logos/clever-primary.svg" alt="..."/>
             </a>
             {/* <!-- User menu (mobile) --> */}
             <div class="navbar-user d-lg-none">
