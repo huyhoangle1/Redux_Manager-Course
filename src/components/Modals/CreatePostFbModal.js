@@ -1,40 +1,39 @@
 import React, { useState, useRef } from "react";
-import {  Modal } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import "./style.css";
 import { Editor, EditorState } from 'draft-js';
 import "draft-js/dist/Draft.css";
 
 const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions }) => {
-  // const [showModalFriends, setShowModalFriends] = useState(false);
 
 
-    // Hàm đóng Modal
-    const handleClose = () => {
-      isShowModal(false);
-      setEditorState(EditorState.createEmpty()); // Reset lại EditorState khi đóng Modal
-    };
+  // Hàm đóng Modal
+  const handleClose = () => {
+    isShowModal(false);
+    setEditorState(EditorState.createEmpty()); // Reset lại EditorState khi đóng Modal
+  };
 
-    const handleOpenModalOptions = () => {
-      setShowModalOptions(true);
-      closeModel()
-    };
+  const handleOpenModalOptions = () => {
+    setShowModalOptions(true);
+    closeModel()
+  };
 
-    const handleOpenModalCheckIn = () => {
-      setShowModalCheckin(true);
-      closeModel()
-    }
+  const handleOpenModalCheckIn = () => {
+    setShowModalCheckin(true);
+    closeModel()
+  }
 
 
-    const handleOpenModalFriends = () => {
-      setShowModalFriends(true);
-      closeModel()
-    };
+  const handleOpenModalFriends = () => {
+    setShowModalFriends(true);
+    closeModel()
+  };
 
-    const handleOpenModalEmoji  = () => {
-      setShowModalEmoji(true);
-      closeModel()
-    };
-  
+  const handleOpenModalEmoji = () => {
+    setShowModalEmoji(true);
+    closeModel()
+  };
+
 
 
 
@@ -42,7 +41,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
   const [editorState, setEditorState] = useState(
     () => EditorState.createEmpty(), // Khởi tạo EditorState với nội dung rỗng
   );
-  
+
   // Hàm focus vào component khi click vào custom-editor
   const focus = () => {
     const content = editorState.getCurrentContent().getPlainText(); // lấy text input trong editor
@@ -72,7 +71,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                 <div class="content">
                   <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
                   <div class="details">
-                    <p onClick={()=>console.log(showModal)}>Hoàng Lê</p>
+                    <p onClick={() => console.log(showModal)}>Hoàng Lê</p>
                     <div class="privacy">
                       <i class="fas fa-user-friends"></i>
                       <span>Friends</span>
@@ -96,7 +95,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                   <img src="./img/smile.svg" alt="" />
                 </div>
                 <div class="options">
-                  <p  onClick={handleOpenModalOptions}>Thêm vào bài viết của bạn</p>
+                  <p onClick={handleOpenModalOptions}>Thêm vào bài viết của bạn</p>
                   <ul class="list">
                     <li><img src="./img/gallery.svg" alt="" /></li>
                     <li onClick={handleOpenModalFriends}><img src="./img/tag.svg" alt="" /></li>

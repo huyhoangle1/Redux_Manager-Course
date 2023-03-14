@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, InputGroup  } from "react-bootstrap";
+import { Modal, Button, Form, InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { editExercise } from "../../actions/courseAction";
 
-const FriendsModal = ({showModalFriends, setShowModalFriends, isShowModal}) => {
+const FriendsModal = ({ showModalFriends, setShowModalFriends, isShowModal }) => {
 
-   const friends = [
+  const friends = [
     {
       id: 1,
       name: "Thomas Anderson",
@@ -49,11 +49,11 @@ const FriendsModal = ({showModalFriends, setShowModalFriends, isShowModal}) => {
       status: "online"
     }
   ];
-  
-    const handleClose =()=>{
-        setShowModalFriends(false);
-        isShowModal(true)
-    }
+
+  const handleClose = () => {
+    setShowModalFriends(false);
+    isShowModal(true)
+  }
 
   return (
     <div>
@@ -66,25 +66,25 @@ const FriendsModal = ({showModalFriends, setShowModalFriends, isShowModal}) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" className="modal-title w-100 text-center">
-              Gắn thẻ người khác
+            Gắn thẻ người khác
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="header-model-input-style">
-          <i class="fa fa-search"></i>
-          <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm bạn bè" />
+            <i class="fa fa-search"></i>
+            <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm bạn bè" />
             <span className="lblDone">Xong</span>
           </div>
           <div className="friends-list-container">
-          <div className="suggest">GỢI Ý</div>
-          <div className="friends-list" id="style-1">
-          {friends.map((item)=>
-            <div key={item.id} className="info-friends">
-                <img src={item.avatar} alt={item.name} />
-                <span>{item.name}</span>
+            <div className="suggest">GỢI Ý</div>
+            <div className="friends-list" id="style-1">
+              {friends.map((item) =>
+                <div key={item.id} className="info-friends">
+                  <img src={item.avatar} alt={item.name} />
+                  <span>{item.name}</span>
+                </div>
+              )}
             </div>
-          )}
-          </div>
           </div>
         </Modal.Body>
       </Modal>

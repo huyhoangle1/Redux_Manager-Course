@@ -3,7 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
-const EmojiModal = ({ showModalEmoji, setShowModalEmoji,isShowModal }) => {
+const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
 
   const icoins = [
     {
@@ -171,7 +171,7 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji,isShowModal }) => {
             >
               <Tab eventKey="home" title="Cảm xúc">
                 <div className="row-feeling-container">
-                <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm" />
+                  <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm" />
                   <div class="row-feeling" id="style-1">
                     <div class="row row-cols-2">
                       {icoins.map((item) => (
@@ -187,18 +187,18 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji,isShowModal }) => {
                 </div>
               </Tab>
               <Tab eventKey="profile" title="Hoạt Động">
-              <div className="row-activity-container">
-                <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm" />
+                <div className="row-activity-container">
+                  <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm" />
                   <div class="row-activity" id="style-1">
                     <div class="row">
                       {icoins.map((item) => (
-                          <div class="column-activity-fa">
-                            <div className="column-activity">
-                              <div className="emoji">{item.icon}</div>
-                              <span>{item.name}</span>
-                            </div>
-                              <i class="fa fa-arrow-right"></i>
+                        <div class="column-activity-fa">
+                          <div className="column-activity">
+                            <div className="emoji">{item.icon}</div>
+                            <span>{item.name}</span>
                           </div>
+                          <i class="fa fa-arrow-right"></i>
+                        </div>
                       ))}
                     </div>
                   </div>

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, InputGroup  } from "react-bootstrap";
+import { Modal, Button, Form, InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { editExercise } from "../../actions/courseAction";
 
-const CheckInModal = ({showModalCheckin, setShowModalCheckin, isShowModal}) => {
+const CheckInModal = ({ showModalCheckin, setShowModalCheckin, isShowModal }) => {
 
-   const MockDataCheckin = [
+  const MockDataCheckin = [
     {
       "name": "Quốc Việt Palace",
       "address": "99 Hoàng Quốc Việt, Cầu Giấy, Hà Nội",
@@ -94,12 +94,12 @@ const CheckInModal = ({showModalCheckin, setShowModalCheckin, isShowModal}) => {
       "latitude": 21.032852,
       "longitude": 105.847858
     }]
-  
-  
-    const handleClose =()=>{
-        setShowModalCheckin(false);
-        isShowModal(true)
-    }
+
+
+  const handleClose = () => {
+    setShowModalCheckin(false);
+    isShowModal(true)
+  }
 
   return (
     <div>
@@ -112,26 +112,26 @@ const CheckInModal = ({showModalCheckin, setShowModalCheckin, isShowModal}) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter" className="modal-title w-100 text-center">
-              Tìm kiếm vị trí 
+            Tìm kiếm vị trí
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="header-model-input-style">
-          <i class="fa fa-search"></i>
-          <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm bạn bè" />
+            <i class="fa fa-search"></i>
+            <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm bạn bè" />
             <span className="lblDone">Xong</span>
           </div>
           <div className="checkin-list-container">
             <div className="checkin-list" id="style-1">
-            {MockDataCheckin.map((item)=>
-              <div key={item.id} className="info-address">
-                <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yN/r/5AmCdexsMi-.png" alt={item.name} />
+              {MockDataCheckin.map((item) =>
+                <div key={item.id} className="info-address">
+                  <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yN/r/5AmCdexsMi-.png" alt={item.name} />
                   <div className="title-address">
                     <span>{item.name}</span>
                     <div>{item.address}</div>
                   </div>
-              </div>
-            )}
+                </div>
+              )}
             </div>
           </div>
         </Modal.Body>
