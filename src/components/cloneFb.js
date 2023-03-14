@@ -4,6 +4,7 @@ import FriendsModal from "./Modals/FriendsModal";
 import EmojiModal from './Modals/EmojiModal';
 import CheckInModal from './Modals/CheckInModal';
 import OptionsModal from './Modals/OptionsModal';
+import EventModal from './Modals/EventModal';
 
 const CloneFb = () => {
     const [showModel, setShowModel] = useState(false);
@@ -11,6 +12,7 @@ const CloneFb = () => {
     const [showModalEmoji, setShowModalEmoji] = useState(false);
     const [showModalCheckin, setShowModalCheckin] = useState(false);
     const [showModalOptions, setShowModalOptions] = useState(false);
+    const [showModalEvent, setShowModalEvent] = useState(false)
 
     const openModel = () => {
         setShowModel(true);
@@ -1058,6 +1060,7 @@ const CloneFb = () => {
                                 setShowModalEmoji={setShowModalEmoji}
                                 setShowModalCheckin={setShowModalCheckin}
                                 setShowModalOptions={setShowModalOptions}
+                                setShowModalEvent={setShowModalEvent}
                             /> :
                             null
                     }
@@ -1089,6 +1092,14 @@ const CloneFb = () => {
                             isShowModal={setShowModel}
                         />
                     ) : null}
+                    {showModalEvent ? (
+                        <EventModal
+                            showModalEvent={showModalEvent}
+                            setShowModalEvent={setShowModalEvent}
+                            isShowModal={setShowModel}
+                        />
+                    ) : null}
+                    
                 </div>
 
             </div>

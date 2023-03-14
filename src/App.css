@@ -509,6 +509,51 @@ div#contained-modal-title-vcenter {
     font-weight: 600;
 }
 
+/* event */
+
+
+.event-container .header-create-event .title-create-event{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.event-container .header-create-event span{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.event-container .header-create-event p{
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.event-container .body-create-event h3{
+    text-align: center;
+    margin: 30px 0px 0 0;
+}
+.event-container .body-create-event .list-event{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.event-container .body-create-event .list-event .img-event{
+    list-style: none;
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.event-container .body-create-event .list-event .img-event span{
+    font-weight: bold;
+}
+
+.event-container .body-create-event .list-event .img-event:hover{
+    background-color: #b9b9b9;
+}
 
 
 @media (min-width: 992px) {

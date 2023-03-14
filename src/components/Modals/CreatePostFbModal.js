@@ -4,7 +4,7 @@ import "./style.css";
 import { Editor, EditorState } from 'draft-js';
 import "draft-js/dist/Draft.css";
 
-const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions }) => {
+const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions, setShowModalEvent }) => {
 
 
   // Hàm đóng Modal
@@ -15,6 +15,11 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
 
   const handleOpenModalOptions = () => {
     setShowModalOptions(true);
+    closeModel()
+  };
+
+  const handleOpenModalEvent = () => {
+    setShowModalEvent(true);
     closeModel()
   };
 
@@ -101,7 +106,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                     <li onClick={handleOpenModalFriends}><img src="./img/tag.svg" alt="" /></li>
                     <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
                     <li onClick={handleOpenModalCheckIn}><img src="./img/mic.svg" alt="" /></li>
-                    <li><img src="./img/mic.svg" alt="" /></li>
+                    <li onClick={handleOpenModalEvent}><img src="./img/mic.svg" alt="" /></li>
                     <li onClick={handleOpenModalOptions}><img src="./img/more.svg" alt="" /></li>
                   </ul>
                 </div>
