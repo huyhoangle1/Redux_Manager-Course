@@ -14,7 +14,7 @@ const OptionsModal = ({ showModalOptions, setShowModalOptions, isShowModal }) =>
         show={showModalOptions}
         onHide={handleClose}
         aria-labelledby="contained-modal-title-vcenter"
-        className="my-modal"
+        className="my-modal-options"
         centered
       >
         <Modal.Header closeButton>
