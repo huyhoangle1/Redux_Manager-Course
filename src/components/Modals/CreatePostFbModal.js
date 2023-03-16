@@ -85,6 +85,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
 
   // Hàm focus vào component khi click vào custom-editor
   const focus = () => {
+    console.log(imagePlugin);
     const content = editorState.getCurrentContent().getPlainText(); // lấy text input trong editor
     console.log(content);
     editorRef.current.focus();
@@ -108,7 +109,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
         <Modal.Body>
           <div class="body-modal">
             <section class="post">
-              <form action="#">
+              <div className="form">
                 <div class="content">
                   <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
                   <div class="details">
@@ -148,16 +149,12 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                               {files.length > 2 ? (
                                 <div>
                                   {files.map((url) => (
-                                    <div className="img-container">
                                             <img src={url} style={{ maxWidth: '50%',backgroundColor: '#f7f8fa' }} key={url} />
-                                    </div>
                                   ))}
                                 </div>
                               ) : (<div>
                                 {files.map((url) => (
-                                          <div className="img-container">
                                           <img src={url} style={{ maxWidth: '100%',backgroundColor: '#f7f8fa' }} key={url} />
-                                  </div>
                                 ))}
                               </div>)}
                             </div>
@@ -188,7 +185,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                   </ul>
                 </div>
                 <button onClick={focus}>Post</button>
-              </form>
+              </div>
             </section>
           </div>
         </Modal.Body>

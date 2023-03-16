@@ -91,35 +91,35 @@ h4 {
     border-bottom: 1px solid #bfbfbf;
 }
 
-.body-modal .post form {
+.body-modal .post .form {
     margin: 20px 25px;
 }
 
-.body-modal .post form :where(.content, .details .privacy) {
+.body-modal .post .form :where(.content, .details .privacy) {
     display: flex;
     align-items: center;
 }
 
-.body-modal .post form .content img {
+.body-modal .post .form .content img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
 
-.body-modal .post form .content {
+.body-modal .post .form .content {
     margin-bottom: 10px;
 }
 
-.body-modal .post form .content .details {
+.body-modal .post .form .content .details {
     margin: -3px 0 0 12px;
 }
 
-.body-modal form .content .details p {
+.body-modal .form .content .details p {
     font-size: 17px;
     font-weight: 500;
 }
 
-.body-modal form .content .details .privacy {
+.body-modal .form .content .details .privacy {
     cursor: pointer;
     width: 98px;
     font-size: 12px;
@@ -141,13 +141,13 @@ h4 {
     margin-left: 1px;
 }
 
-.body-modal .post form :where(textarea, button) {
+.body-modal .post .form :where(textarea, button) {
     width: 100%;
     border: none;
     outline: none;
 }
 
-.body-modal .post form textarea {
+.body-modal .post .form textarea {
     display: block;
     resize: none;
     font-size: 18px;
@@ -155,17 +155,17 @@ h4 {
     min-height: 100px;
 }
 
-.body-modal .post form :where(.theme-emoji, .options) {
+.body-modal .post .form :where(.theme-emoji, .options) {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.body-modal .post form .theme-emoji img {
+.body-modal .post .form .theme-emoji img {
     cursor: pointer;
 }
 
-.body-modal form .options {
+.body-modal .form .options {
     height: 57px;
     border-radius: 7px;
     padding: 0 15px;
@@ -173,34 +173,34 @@ h4 {
     border: 1px solid #b9b9b9;
 }
 
-.body-modal form .options p {
+.body-modal .form .options p {
     color: #595959;
     font-size: 14px;
     font-weight: 500;
 }
 
-.body-modal form .options :where(.list, li) {
+.body-modal .form .options :where(.list, li) {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.body-modal form .options .list li {
+.body-modal .form .options .list li {
     list-style: style none;
     height: 42px;
     width: 42px;
     border-radius: 50%;
 }
 
-.body-modal form .list li:hover {
+.body-modal .form .list li:hover {
     background: #f0f1f4;
 }
 
-.body-modal form .list li img {
+.body-modal .form .list li img {
     cursor: pointer;
 }
 
-.body-modal form button {
+.body-modal .form button {
     height: 53px;
     font-size: 18px;
     font-weight: 500;
@@ -210,7 +210,7 @@ h4 {
     background: #e2e5e9;
 }
 
-.body-modal form textarea:valid~button {
+.body-modal .form textarea:valid~button {
     color: #fff;
     cursor: pointer;
     background: #4599ff;
@@ -613,10 +613,6 @@ i.bi.bi-x {
 
 button.btnAddImages{
     display: none;
-}
-
-.container-dropzone:hover .body-image{
-    background-color: red;
 }
 
 
