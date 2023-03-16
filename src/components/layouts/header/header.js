@@ -35,7 +35,7 @@ function NavScrollExample() {
                 <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="avatar-parent-child">
                     <img alt="Image Placeholder" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar- rounded-circle" />
-                    <span class="avatar-child avatar-badge bg-primary ms-2">Lê Huy Hoàng</span>
+                    <h5 class="avatar-child avatar-badge bg-primary ms-2">Lê Huy Hoàng</h5>
                   </div>
                 </a>
               </div>

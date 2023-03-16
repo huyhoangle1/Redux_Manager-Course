@@ -26,7 +26,7 @@ const EditExercisesModel = ({ courseTasks, showExercisesModal, isExercisesShowMo
 
   return (
     <div>
-      <Modal show={showExercisesModal} onHide={handleClose}>
+      <Modal show={showExercisesModal} onHide={handleClose} className="my-modal-event">
         <Modal.Header closeButton>
           <Modal.Title className="modal-title w-100 text-center">Edit Exercises</Modal.Title>
         </Modal.Header>

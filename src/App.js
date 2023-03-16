@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/layouts/header/header';
 import FavoriteList from './components/favoriteList';
 import CloneFb from './components/cloneFb';
+import Home from './components/Home';
 
 const AdminDashboard = () => {
   const courses = useSelector(state => state.courses);
@@ -55,7 +56,7 @@ const AdminDashboard = () => {
               {/* <!-- Navigation --> */}
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="/">
+                  <a class="nav-link" href="/allCourse">
                     <i class="bi bi-house"></i> Dashboard
                   </a>
                 </li>
@@ -187,7 +188,8 @@ const AdminDashboard = () => {
           <Header />
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<CourseList courses={courses} />} />
+              <Route path="/" element={<Home courses={courses} />} />
+              <Route path="/allCourse" element={<CourseList courses={courses} />} />
               <Route path="/Add" element={<CourseForm />} />
               <Route path="/search" element={<SearchBar />} />
               <Route path="/myfavorite" element={<FavoriteList />} />

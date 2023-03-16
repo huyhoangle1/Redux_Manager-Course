@@ -57,7 +57,7 @@ const Course = ({ course, onDelete, onToggleFavorite }) => {
             </th>
             <th className='p-4' style={{ width: 80 }}>{course.category}</th>
             <th className='p-4' style={{ maxWidth: 300, textOverflow: 'ellipsis', overflow:'hidden', whiteSpace:'nowrap',WebkitLineClamp:3 }}>{course.description}</th>
-            <th style={{ justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
+            <th style={{ justifyContent: 'center', display: 'flex', alignItems: 'center', height:100 }}>
               <div>
                 <Button style={{ width: 100 }} variant="primary" onClick={handleToggleFavorite}>
                   {course.favorite ? 'Unfavorite' : 'Favorite'}

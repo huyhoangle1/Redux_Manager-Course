@@ -18,6 +18,12 @@ nav#navbarVertical {
     font-size: 1.2rem;
 }
 
+.avatar-parent-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 h4 {
     color: #fdfdfd;
     margin-left: 3px;

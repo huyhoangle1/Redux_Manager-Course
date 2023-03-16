@@ -29,9 +29,9 @@ const EditCourse = ({ course, isShow, show }) => {
   return (
     <div>
       <Modal show={show} onHide={handleClose}
-        size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className="my-modal-event"
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">

@@ -42,8 +42,8 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
       <Modal
         show={showModal}
         onHide={handleClose}
-        size="xl"
         aria-labelledby="contained-modal-title-vcenter"
+        className="my-modal-event"
         centered
       >
         <Modal.Header closeButton>
