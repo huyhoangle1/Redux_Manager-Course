@@ -3,7 +3,7 @@
     height: 500px;
   }
   .my-modal .modal-body {
-    height: 410px;
+    height: auto;
     width: 550px;
 }
 

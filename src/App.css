@@ -278,17 +278,17 @@ div#contained-modal-title-vcenter {
     font-weight: 600;
 }
 .friends-list{
-    height: 100%;
+    height: 90%;
     overflow-y: hidden; 
 }
 
 .friends-list:hover{
-    height: 100%;
+    height: 90%;
     overflow-y: auto; 
 }
 #style-1::-webkit-scrollbar
 {
-	width: 12px;
+	width: 10px;
 	background-color: #F5F5F5;
 }
 
@@ -354,7 +354,7 @@ div#contained-modal-title-vcenter {
 
 .row-feeling {
     margin-left: 5%;
-    height: 100%;
+    height: 90%;
     overflow-x: hidden; 
     /* overflow-y: hidden;  */
   }
@@ -363,7 +363,7 @@ div#contained-modal-title-vcenter {
     display: none; 
   }
   .row-feeling:hover{
-    height: 100%;
+    height: 90%;
     overflow-y: auto; 
 }
   
@@ -405,7 +405,7 @@ div#contained-modal-title-vcenter {
 
 .row-activity {
     margin-left: 18px;
-    height: 100%;
+    height: 90%;
     overflow-x: hidden; 
     /* overflow-y: hidden;  */
   }
@@ -414,7 +414,7 @@ div#contained-modal-title-vcenter {
     display: none; 
   }
   .row-activity:hover{
-    height: 100%;
+    height: 90%;
     overflow-y: auto; 
 }
   
@@ -567,6 +567,91 @@ div#contained-modal-title-vcenter {
     background-color: #f2f2f2;
     border-radius: 5px;
 }
+
+.container-dropzone{
+    border: 1px solid #f4f5f5;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.dropzone  {
+    width: 100%;
+    height: 115px;
+    text-align: center;
+    border: 1px solid #f7f8fa;
+    background-color: #f7f8fa;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.dropzone .body-dropzone span{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.dropzone .body-dropzone p{
+    font-weight: 200;
+}
+
+i.bi.bi-x {
+    cursor: pointer;
+    font-size: 17px;
+    position: absolute;
+    right: 48px;
+    border: 1px solid #ebeced;
+    width: 28px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: inline-block;
+    margin-top: 12px;
+    text-align: center;
+}
+
+button.btnAddImages{
+    display: none;
+}
+
+.container-dropzone:hover .body-image{
+    background-color: red;
+}
+
+
+.container-dropzone:hover button.btnAddImages{
+    width: 120px !important;
+    height: 30px !important;
+    font-size: -2px;
+    position: absolute;
+    list-style: none;
+    display: flex;
+    background-color: #fff !important;
+    padding: 3px;
+    text-align: center;
+    left: 60px;
+    margin-top: 3px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+
+
+button.btnAddImages li img{
+    width: 15px;
+    height: 15px;
+}
+
+button.btnAddImages span{
+    color: #050505;
+    font-size: 12px;
+    margin-left: 5px;
+    font-weight: bold;
+} 
 
 
 

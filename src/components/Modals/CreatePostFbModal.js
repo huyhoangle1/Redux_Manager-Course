@@ -5,10 +5,11 @@ import { Editor, EditorState } from 'draft-js';
 import "draft-js/dist/Draft.css";
 import createImagePlugin from 'draft-js-image-plugin';
 import Dropzone from 'react-dropzone';
+import Item from "antd/es/list/Item";
 
 const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions, setShowModalEvent }) => {
   const [statusImage, setStatusImage] = useState(false);
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState();
   const imagePlugin = createImagePlugin();
   const editorRef = useRef(); // tạo reference để lấy DOM của component Editor
   const [editorState, setEditorState] = useState(
@@ -16,9 +17,27 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
   );
 
   const handleDrop = (acceptedFiles) => {
-    // Add code to handle file upload here
-    setFiles(acceptedFiles);
+    const uploadedFiles = acceptedFiles.map(file =>
+      URL.createObjectURL(file)
+    );
+    console.log(uploadedFiles);
+    setFiles(uploadedFiles)
   }
+
+  const handleAddImages= ()=> {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.multiple = true;
+    input.accept = 'image/*';
+  
+    input.addEventListener('change', (event) => {
+      const newFiles = Array.from(event.target.files);
+      setFiles([...files, ...newFiles.map((file) => URL.createObjectURL(file))]);
+    });
+  
+    input.click();
+  }
+  
 
 
   // Hàm đóng Modal
@@ -32,8 +51,13 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
     closeModel()
   };
 
-  const handleOpenChooseImage =()=>{
+  const handleOpenChooseImage = () => {
     setStatusImage(true);
+  }
+
+  const handleCloseChooseImage = () => {
+    setStatusImage(false);
+    setFiles();
   }
 
   const handleOpenModalEvent = () => {
@@ -104,30 +128,54 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                     ref={editorRef} // Gán reference vào component Editor
                     editorState={editorState}
                     onChange={setEditorState}
+                    plugins={[imagePlugin]}
                   />
                 </div>
 
-                {statusImage == false ? ( <div class="theme-emoji">
+                {statusImage == false ? (<div class="theme-emoji">
                   <img src="./img/theme.svg" alt="" />
                   <img src="./img/smile.svg" alt="" />
-                </div>) : (
-                   <div>
-                   <Dropzone onDrop={handleDrop}>
-                     {({getRootProps, getInputProps}) => (
-                       <div {...getRootProps()}>
-                         <input {...getInputProps()} />
-                         <span>Thêm ảnh/video</span>
-                         <p>hoặc kéo và thả</p>
-                       </div>
-                     )}
-                   </Dropzone>
-                   <Editor
-                     editorState={editorState}
-                     onChange={(state) => setEditorState(state)}
-                     plugins={[imagePlugin]}
-                   />
-                 </div>
-                )} 
+                </div>
+                ) : (
+                  <div>
+                    <i onClick={handleCloseChooseImage} class="bi bi-x"></i>
+                    <Dropzone onDrop={handleDrop}>
+                      {({ getRootProps, getInputProps }) => (
+                        <div className="container-dropzone">
+                          {files ? (
+                            <div className="body-image">
+                              <button className="btnAddImages" onClick={handleAddImages}> <li><img src="./img/gallery.svg" alt="" /></li><span> Thêm ảnh </span></button>
+                              {files.length > 2 ? (
+                                <div>
+                                  {files.map((url) => (
+                                    <div className="img-container">
+                                            <img src={url} style={{ maxWidth: '50%',backgroundColor: '#f7f8fa' }} key={url} />
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : (<div>
+                                {files.map((url) => (
+                                          <div className="img-container">
+                                          <img src={url} style={{ maxWidth: '100%',backgroundColor: '#f7f8fa' }} key={url} />
+                                  </div>
+                                ))}
+                              </div>)}
+                            </div>
+
+                          ) : (<div {...getRootProps()} className="dropzone">
+                            <div className="body-dropzone">
+                              <input {...getInputProps()} />
+                              <li><img src="./img/gallery.svg" alt="" /></li>
+                              <span>Thêm ảnh/video</span>
+                              <p>hoặc kéo và thả</p>
+                            </div>
+                          </div>)}
+                        </div>
+                      )}
+                    </Dropzone>
+                  </div>
+                )}
+
                 <div class="options">
                   <p onClick={handleOpenModalOptions}>Thêm vào bài viết của bạn</p>
                   <ul class="list">
