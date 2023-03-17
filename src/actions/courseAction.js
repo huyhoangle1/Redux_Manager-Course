@@ -61,3 +61,10 @@ export const setChooseFriends = chooseFriends => {
     };
 };
 
+export const setChooseEmoji = chooseEmoji => {
+    return {
+        type: types.SET_CHOOSE_EMOJI,
+        chooseEmoji,
+    };
+};
+

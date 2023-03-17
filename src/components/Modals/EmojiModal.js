@@ -2,43 +2,48 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import { setChooseEmoji } from "../../actions/courseAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
+  const dataChooseEmoji = useSelector((state) => state.chooseEmoji);
+
+  const dispatch = useDispatch();
 
   const icoins = [
     {
       id: 1,
-      name: "Like",
+      name: "Thích thú",
       icon: "❤️",
       count: 100
     },
     {
       id: 2,
-      name: "Love",
+      name: "Yêu đời",
       icon: "❤️️",
       count: 50
     },
     {
       id: 3,
-      name: "Haha",
+      name: "vui vẻ",
       icon: "😂",
       count: 30
     },
     {
       id: 4,
-      name: "Wow",
+      name: "ngạc nhiên",
       icon: "😮",
       count: 10
     },
     {
       id: 5,
-      name: "Sad",
+      name: "Buồn",
       icon: "😢",
       count: 5
     },
     {
       id: 6,
-      name: "Angry",
+      name: "Đói",
       icon: "😡",
       count: 2
     },
@@ -142,6 +147,15 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
 
   ];
 
+
+  const chooseEmoji = (item) => {
+    const isSelected = dataChooseEmoji.id === item.id;
+    dispatch(setChooseEmoji(isSelected ? {} : item));
+    setShowModalEmoji(false);
+    isShowModal(true);
+  };
+  
+
   const handleClose = () => {
     setShowModalEmoji(false);
     isShowModal(true)
@@ -174,14 +188,14 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
                   <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm" />
                   <div class="row-feeling" id="style-1">
                     <div class="row row-cols-2">
-                      {icoins.map((item) => (
-                        <div class="col">
-                          <div class="column-feeling">
+                    {icoins.map((item) => (
+                      <div key={item.id} class="col">
+                          <div onClick={() => chooseEmoji(item)} class={`column-feeling ${[dataChooseEmoji][0].id === item.id ? "selected" : ""}`}>
                             <div className="emoji">{item.icon}</div>
                             <span>{item.name}</span>
                           </div>
-                        </div>
-                      ))}
+                      </div>
+                    ))}
                     </div>
                   </div>
                 </div>

@@ -416,6 +416,10 @@ div#contained-modal-title-vcenter {
     margin-top: 20px;
     padding: 5px;
 }
+.column-feeling.selected {
+    background-color: #bcc0c4;
+    border-radius: 20px;
+}
 
 .row-feeling .column-feeling:hover{
     background-color: #bcc0c4;

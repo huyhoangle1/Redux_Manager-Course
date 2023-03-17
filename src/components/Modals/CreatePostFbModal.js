@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions, setShowModalEvent }) => {
   const chooseFriends = useSelector((state) => state.chooseFriends);
+  const chooseEmoji = useSelector((state) => state.chooseEmoji);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -103,12 +104,13 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
     }
     return result;
   };
+  const getAssignedNamesEmoji = () => {
+    return `đang cảm thấy ${[chooseEmoji][0]?.name?.toLowerCase()} ${[chooseEmoji][0].icon}`;
+  };
 
 
   // Hàm focus vào component khi click vào custom-editor
   const focus = () => {
-    console.log(chooseFriends);
-    console.log(imagePlugin);
     const content = editorState.getCurrentContent().getPlainText(); // lấy text input trong editor
     console.log(content);
     editorRef.current.focus();
@@ -137,8 +139,9 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                   <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
                   <div class="details">
                     <div>
-                      <p style={{fontSize:14}} onClick={() => console.log(showModal)}>Hoàng Lê {" "}
-                      {chooseFriends.length > 0 && getAssignedNames()}</p>
+                      <p style={{ fontSize: 14 }} onClick={() => console.log(showModal)}>Hoàng Lê {" "}
+                        {Object.keys(chooseEmoji).length > 0 && getAssignedNamesEmoji()} {" "}
+                        {chooseFriends.length > 0 && getAssignedNames()}</p>
 
                     </div>
                     <div class="privacy">
@@ -204,7 +207,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                   <p onClick={handleOpenModalOptions}>Thêm vào bài viết của bạn</p>
                   <ul class="list">
                     <li onClick={handleOpenChooseImage}><img src="./img/gallery.svg" alt="" /></li>
-                       {chooseFriends.length > 0 ? (
+                    {chooseFriends.length > 0 ? (
                       <li onClick={handleOpenModalFriends} style={{ backgroundColor: '#caeef9' }}>
                         <img src="./img/tag.svg" alt="" />
                       </li>
@@ -213,8 +216,13 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                         <img src="./img/tag.svg" alt="" />
                       </li>
                     )}
-
-                    <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
+                    {Object.keys(chooseEmoji).length > 0 ? (
+                      <li onClick={handleOpenModalEmoji} style={{ backgroundColor: '#fdefc9' }}>
+                        <img src="./img/emoji.svg" alt="" />
+                      </li>
+                    ) : (
+                      <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
+                    )}
                     <li onClick={handleOpenModalCheckIn}><img src="./img/mic.svg" alt="" /></li>
                     <li onClick={handleOpenModalEvent}><img src="./img/mic.svg" alt="" /></li>
                     <li onClick={handleOpenModalOptions}><img src="./img/more.svg" alt="" /></li>
