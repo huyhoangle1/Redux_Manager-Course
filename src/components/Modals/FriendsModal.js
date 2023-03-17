@@ -5,7 +5,6 @@ import { editExercise } from "../../actions/courseAction";
 
 const FriendsModal = ({ showModalFriends, setShowModalFriends, isShowModal }) => {
   const [chooseFriends, setChooseFriends] = useState([]);
-  const [showScrollbar, setShowScrollbar] = useState(false);
   const friends = [
     {
       id: 1,
