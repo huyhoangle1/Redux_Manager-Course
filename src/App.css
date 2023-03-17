@@ -273,6 +273,11 @@ div#contained-modal-title-vcenter {
 /* friends  */
 
 .friends-list-container{
+    height: 100%;
+    cursor: pointer;
+    font-family: inherit;
+}
+.scroll{
     height: 310px;
     cursor: pointer;
     font-family: inherit;
@@ -282,6 +287,12 @@ div#contained-modal-title-vcenter {
     margin: 15px 0px 5px 10px;
     color: #65676B;
     font-weight: 600;
+}
+.friends-list-container .assign-tags{
+    font-size: small;
+    color: #65676B;
+    font-weight: 600;
+    padding: 8px;
 }
 .friends-list{
     height: 90%;
@@ -326,6 +337,32 @@ div#contained-modal-title-vcenter {
 .friends-list .info-friends:hover {
    background-color: #CFD1D5;
    border-radius: 5px;
+}
+
+
+.border-chooseFriends {
+    padding: 10px;
+    display: inline-flex;
+    border: 1px solid #d9dadd;
+    border-radius: 5px;
+    margin: 5px;
+    width: 100%;
+    height: auto;
+    overflow-x: auto ; 
+    flex-wrap: wrap;
+}
+
+
+.border-chooseFriends .choose-Friend{
+    margin: 0px 5px;
+    padding: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background-color: #e7f3ff;
+    color: #3387f4;
+    font-size: 13px;
+    text-align: center;
+    height: fit-content;
 }
 
 
