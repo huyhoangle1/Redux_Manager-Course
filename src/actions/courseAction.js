@@ -57,7 +57,7 @@ export const searchCourses = searchText => {
 export const setChooseFriends = chooseFriends => {
     return {
         type: types.SET_CHOOSE_FRIENDS,
-        payload: chooseFriends,
+        chooseFriends,
     };
 };
 

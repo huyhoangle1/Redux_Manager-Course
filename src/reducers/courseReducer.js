@@ -1,11 +1,15 @@
-import { SET_CHOOSE_FRIENDS, ADD_COURSE, EDIT_COURSE, DELETE_COURSE, TOGGLE_FAVORITE, SEARCH_COURSES, SET_COURSES, EDIT_EXERCISE, EXERCISE_STATUS } from '../constants/CourseTypes';
+import { SET_CHOOSE_FRIENDS_DATA ,SET_CHOOSE_FRIENDS, ADD_COURSE, EDIT_COURSE, DELETE_COURSE, TOGGLE_FAVORITE, SEARCH_COURSES, SET_COURSES, EDIT_EXERCISE, EXERCISE_STATUS } from '../constants/CourseTypes';
 import { v4 as uuidv4 } from 'uuid';
 
 
 export const chooseFriendsReducer = (state = [], action) => {
   switch (action.type) {
     case SET_CHOOSE_FRIENDS:
-      return action.payload;
+      localStorage.setItem('chooseFriends', JSON.stringify(action.chooseFriends));
+      return action.chooseFriends;
+      case SET_CHOOSE_FRIENDS_DATA:
+        console.log(action);
+      return action.chooseFriends || state; 
     default:
       return state;
   }

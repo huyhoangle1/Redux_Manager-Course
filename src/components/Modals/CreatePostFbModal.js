@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import "./style.css";
 import { Editor, EditorState } from 'draft-js';
@@ -9,6 +9,14 @@ import { useSelector, useDispatch } from "react-redux";
 
 const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions, setShowModalEvent }) => {
   const chooseFriends = useSelector((state) => state.chooseFriends);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const chooseFriendsFromStorage = JSON.parse(localStorage.getItem('chooseFriends'));
+    if (chooseFriendsFromStorage) {
+      dispatch({ type: 'SET_CHOOSE_FRIENDS_DATA', chooseFriends: chooseFriendsFromStorage });
+    }
+  }, [dispatch]);
 
   const [statusImage, setStatusImage] = useState(false);
   const [files, setFiles] = useState();

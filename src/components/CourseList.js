@@ -10,13 +10,10 @@ import { Button } from 'react-bootstrap';
 const CourseList = () => {
   const dispatch = useDispatch();
   const courses = useSelector(state => state.courses);
-  const favoriteCourses = useSelector(state => state.courses.filter(course => course.favorite));
 
   useEffect(() => {
     const savedCourses = JSON.parse(localStorage.getItem('coursesState'));
-    // console.log(savedCourses);
     if (savedCourses) {
-      console.log(savedCourses, 'tttt');
       dispatch({ type: 'SET_COURSES', courses: savedCourses });
     }
   }, [dispatch]);

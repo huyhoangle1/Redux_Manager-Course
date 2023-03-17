@@ -111,7 +111,7 @@ const CourseForm = () => {
     }else if (!endDay || !moment(endDay, 'YYYY-MM-DD', true).isValid()) {
       alert('Vui lòng nhập end day theo định dạng YYYY-MM-DD');
       setEndDay('');
-    }else if (startDate < today) {
+    }else if (startDate <= today) {
       alert("Ngày bắt đầu không được phép trước ngày hiện tại.");
       setStartDay('');
     } else if (startDate > endDate) {
@@ -126,7 +126,7 @@ const CourseForm = () => {
       setDescription('');
       setImagePath('');
       alert('Add successfully');
-      history('/')
+      history('/allCourse')
     }
   };
 
