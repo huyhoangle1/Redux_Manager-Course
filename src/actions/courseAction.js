@@ -45,12 +45,19 @@ export const editExercise = (courseId, taskId, updates) => ({
     courseId,
     taskId,
     updates
-  });
+});
 
 export const searchCourses = searchText => {
     return {
         type: types.SEARCH_COURSES,
         searchText
+    };
+};
+
+export const setChooseFriends = chooseFriends => {
+    return {
+        type: types.SET_CHOOSE_FRIENDS,
+        payload: chooseFriends,
     };
 };
 

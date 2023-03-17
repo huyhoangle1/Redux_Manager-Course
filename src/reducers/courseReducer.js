@@ -1,5 +1,16 @@
-import { ADD_COURSE, EDIT_COURSE, DELETE_COURSE, TOGGLE_FAVORITE, SEARCH_COURSES, SET_COURSES, EDIT_EXERCISE, EXERCISE_STATUS } from '../constants/CourseTypes';
+import { SET_CHOOSE_FRIENDS, ADD_COURSE, EDIT_COURSE, DELETE_COURSE, TOGGLE_FAVORITE, SEARCH_COURSES, SET_COURSES, EDIT_EXERCISE, EXERCISE_STATUS } from '../constants/CourseTypes';
 import { v4 as uuidv4 } from 'uuid';
+
+
+export const chooseFriendsReducer = (state = [], action) => {
+  switch (action.type) {
+    case SET_CHOOSE_FRIENDS:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 
 const coursesReducer = (state = [], action) => {
   switch (action.type) {

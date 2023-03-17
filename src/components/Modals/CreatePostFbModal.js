@@ -5,9 +5,11 @@ import { Editor, EditorState } from 'draft-js';
 import "draft-js/dist/Draft.css";
 import createImagePlugin from 'draft-js-image-plugin';
 import Dropzone from 'react-dropzone';
-import Item from "antd/es/list/Item";
+import { useSelector, useDispatch } from "react-redux";
 
 const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions, setShowModalEvent }) => {
+  const chooseFriends = useSelector((state) => state.chooseFriends);
+
   const [statusImage, setStatusImage] = useState(false);
   const [files, setFiles] = useState();
   const imagePlugin = createImagePlugin();
@@ -24,20 +26,20 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
     setFiles(uploadedFiles)
   }
 
-  const handleAddImages= ()=> {
+  const handleAddImages = () => {
     const input = document.createElement('input');
     input.type = 'file';
     input.multiple = true;
     input.accept = 'image/*';
-  
+
     input.addEventListener('change', (event) => {
       const newFiles = Array.from(event.target.files);
       setFiles([...files, ...newFiles.map((file) => URL.createObjectURL(file))]);
     });
-  
+
     input.click();
   }
-  
+
 
 
   // Hàm đóng Modal
@@ -81,10 +83,23 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
     closeModel()
   };
 
+  const getAssignedNames = () => {
+    const count = chooseFriends.length;
+    let result = "cùng với ";
+    if (count === 1) {
+      result += chooseFriends[0];
+    } else if (count === 2) {
+      result += `${chooseFriends[0]} và ${chooseFriends[1]}`;
+    } else if (count > 2) {
+      result += `${chooseFriends[0]}, ${chooseFriends[1]} và ${(count - 2)} người khác`;
+    }
+    return result;
+  };
 
 
   // Hàm focus vào component khi click vào custom-editor
   const focus = () => {
+    console.log(chooseFriends);
     console.log(imagePlugin);
     const content = editorState.getCurrentContent().getPlainText(); // lấy text input trong editor
     console.log(content);
@@ -113,7 +128,14 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                 <div class="content">
                   <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
                   <div class="details">
-                    <p onClick={() => console.log(showModal)}>Hoàng Lê</p>
+                    <div>
+                      <p onClick={() => console.log(showModal)}>Hoàng Lê</p>
+                      {chooseFriends.length > 0 &&
+                        <div>
+                          {getAssignedNames()}
+                        </div>
+                      }
+                    </div>
                     <div class="privacy">
                       <i class="fas fa-user-friends"></i>
                       <span>Friends</span>
@@ -149,12 +171,12 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                               {files.length > 2 ? (
                                 <div>
                                   {files.map((url) => (
-                                            <img src={url} style={{ maxWidth: '50%',backgroundColor: '#f7f8fa' }} key={url} />
+                                    <img src={url} style={{ maxWidth: '50%', backgroundColor: '#f7f8fa' }} key={url} />
                                   ))}
                                 </div>
                               ) : (<div>
                                 {files.map((url) => (
-                                          <img src={url} style={{ maxWidth: '100%',backgroundColor: '#f7f8fa' }} key={url} />
+                                  <img src={url} style={{ maxWidth: '100%', backgroundColor: '#f7f8fa' }} key={url} />
                                 ))}
                               </div>)}
                             </div>

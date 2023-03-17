@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Modal, Button, Form, InputGroup } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { editExercise } from "../../actions/courseAction";
+import { Modal, Form } from "react-bootstrap";
+import { setChooseFriends } from "../../actions/courseAction";
+import { useSelector, useDispatch } from "react-redux";
 
 const FriendsModal = ({ showModalFriends, setShowModalFriends, isShowModal }) => {
-  const [chooseFriends, setChooseFriends] = useState([]);
+  const dispatch = useDispatch();
+  const chooseFriends = useSelector((state) => state.chooseFriends);
   const friends = [
     {
       id: 1,
@@ -41,64 +42,11 @@ const FriendsModal = ({ showModalFriends, setShowModalFriends, isShowModal }) =>
       name: "Oracssle",
       avatar: "https://i.pravatar.cc/150?img=6",
       status: "offline"
-    },
-    {
-      id: 6,
-      name: "Oraaacle",
-      avatar: "https://i.pravatar.cc/150?img=6",
-      status: "offline"
-    },
-    {
-      id: 6,
-      name: "Oracle",
-      avatar: "https://i.pravatar.cc/150?img=6",
-      status: "offline"
-    },
-    {
-      id: 6,
-      name: "Orascle",
-      avatar: "https://i.pravatar.cc/150?img=6",
-      status: "offline"
-    },
-    {
-      id: 6,
-      name: "Oraccle",
-      avatar: "https://i.pravatar.cc/150?img=6",
-      status: "offline"
-    },
-    {
-      id: 6,
-      name: "Oraclasdce",
-      avatar: "https://i.pravatar.cc/150?img=6",
-      status: "offline"
-    },
-    {
-      id: 6,
-      name: "Oracladea",
-      avatar: "https://i.pravatar.cc/150?img=6",
-      status: "offline"
-    },
-    {
-      id: 6,
-      name: "Oraasdcles",
-      avatar: "https://i.pravatar.cc/150?img=6",
-      status: "offline"
-    },
-    {
-      id: 6,
-      name: "Oraclaase",
-      avatar: "https://i.pravatar.cc/150?img=6",
-      status: "offline"
-    },
-    {
-      id: 7,
-      name: "Niobe",
-      avatar: "https://i.pravatar.cc/150?img=7",
-      status: "online"
     }
   ];
 
   const handleClose = () => {
+    dispatch(setChooseFriends(chooseFriends));
     setShowModalFriends(false);
     isShowModal(true)
   }
@@ -106,10 +54,10 @@ const FriendsModal = ({ showModalFriends, setShowModalFriends, isShowModal }) =>
   const handleChooseFriends = (index) => {
     if (chooseFriends.includes(index)) {
       const new_arr = chooseFriends.filter(item => item !== index);
-      setChooseFriends(new_arr)
+      dispatch(setChooseFriends(new_arr));
     } else {
       const updatedList = [...chooseFriends, index];
-      setChooseFriends(updatedList);
+      dispatch(setChooseFriends(updatedList));
     }
   }
 
@@ -132,7 +80,7 @@ const FriendsModal = ({ showModalFriends, setShowModalFriends, isShowModal }) =>
           <div className="header-model-input-style">
             <i class="fa fa-search"></i>
             <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm bạn bè" />
-            <span className="lblDone">Xong</span>
+            <span onClick={handleClose} className="lblDone">Xong</span>
           </div>
           <div className="friends-list-container">
             {chooseFriends.length > 0 ? (<>
