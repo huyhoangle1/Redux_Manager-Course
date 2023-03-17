@@ -137,12 +137,9 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                   <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
                   <div class="details">
                     <div>
-                      <p onClick={() => console.log(showModal)}>Hoàng Lê</p>
-                      {chooseFriends.length > 0 &&
-                        <div>
-                          {getAssignedNames()}
-                        </div>
-                      }
+                      <p style={{fontSize:14}} onClick={() => console.log(showModal)}>Hoàng Lê {" "}
+                      {chooseFriends.length > 0 && getAssignedNames()}</p>
+
                     </div>
                     <div class="privacy">
                       <i class="fas fa-user-friends"></i>
@@ -207,7 +204,16 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                   <p onClick={handleOpenModalOptions}>Thêm vào bài viết của bạn</p>
                   <ul class="list">
                     <li onClick={handleOpenChooseImage}><img src="./img/gallery.svg" alt="" /></li>
-                    <li onClick={handleOpenModalFriends}><img src="./img/tag.svg" alt="" /></li>
+                       {chooseFriends.length > 0 ? (
+                      <li onClick={handleOpenModalFriends} style={{ backgroundColor: '#caeef9' }}>
+                        <img src="./img/tag.svg" alt="" />
+                      </li>
+                    ) : (
+                      <li onClick={handleOpenModalFriends}>
+                        <img src="./img/tag.svg" alt="" />
+                      </li>
+                    )}
+
                     <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
                     <li onClick={handleOpenModalCheckIn}><img src="./img/mic.svg" alt="" /></li>
                     <li onClick={handleOpenModalEvent}><img src="./img/mic.svg" alt="" /></li>
