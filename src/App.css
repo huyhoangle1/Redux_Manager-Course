@@ -449,6 +449,23 @@ div#contained-modal-title-vcenter {
 .row-activity-container{
     height: 290px;
 }
+.row-activity-container .search{
+    display: flex;
+}
+.row-activity-container .search .search-activity-name{
+    white-space: nowrap; 
+    width: 40%; 
+    font-size: 15px;
+    overflow: hidden;
+    background-color: #e7f3ff;
+    text-overflow: ellipsis; 
+    border: 1px solid #f3f9ff;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    color: #3588f4;
+    font-weight: 600;
+}
 
 .row-activity {
     margin-left: 18px;
@@ -475,6 +492,7 @@ div#contained-modal-title-vcenter {
 
 .row-activity .column-activity-fa {
     display: flex;
+    margin-top: 10px;
 }
 
 .row-activity .column-activity-fa:hover{
@@ -495,8 +513,7 @@ div#contained-modal-title-vcenter {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    left: 380px;
+    margin-right: 10px;
 }
 
 .row-activity .column-activity-fa .column-activity .emoji{

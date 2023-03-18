@@ -6,9 +6,147 @@ import { setChooseEmoji } from "../../actions/courseAction";
 import { useDispatch, useSelector } from "react-redux";
 
 const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
+  const [showModalActivity, setShowModalActivity] = useState(false);
+  const [dataActivity, setDataActivity] = useState([]);
   const dataChooseEmoji = useSelector((state) => state.chooseEmoji);
 
   const dispatch = useDispatch();
+
+  const activity = [
+    {
+      id: 1,
+      name: "Đang chúc mừng...",
+      icon: "❤️️",
+      activity: [
+        {
+          type: "❤️️",
+          name: "Gửi quà tặng đến người nhận"
+        },
+        {
+          type: "❤️️",
+          name: "Tổ chức tiệc sinh nhật"
+        },
+        {
+          type: "❤️️",
+          name: "Hát mừng sinh nhật"
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: "Kỷ niệm ngày cưới...",
+      icon: "❤️️",
+      activity: [
+        {
+          type: "❤️️",
+          name: "Mua hoa tặng vợ"
+        },
+        {
+          type: "❤️️",
+          name: "Trao những món quà đặc biệt"
+        },
+        {
+          type: "❤️️",
+          name: "Đi ăn tối tại nhà hàng sang trọng"
+        }
+      ]
+    },
+    {
+      id: 3,
+      name: "Thành công trong công việc mới...",
+      icon: "❤️️",
+      activity: [
+        {
+          type: "❤️️",
+          name: "Tặng phiếu giảm giá cho học viện lập trình"
+        },
+        {
+          type: "❤️️",
+          name: "Đi chơi sau giờ làm để tưởng nhớ thành tích xem phim chiếu rạp"
+        },
+        {
+          type: "❤️️",
+          name: "Gửi lời chúc mừng qua email hoặc đường dây nóng"
+        }
+      ]
+    },
+    {
+      id: 4,
+      name: "Tân gia",
+      icon: "❤️️",
+      activity: [
+        {
+          type: "❤️️",
+          name: "Mua quà tặng cho gia chủ"
+        },
+        {
+          type: "❤️️",
+          name: "Tham quan chơi và ngâm cứu địa lý căn nhà mới"
+        },
+        {
+          type: "❤️️",
+          name: "Ăn uống kế hoạch ở nhà"
+        }
+      ]
+    },
+    {
+      id: 5,
+      name: "Tốt nghiệp đại học",
+      icon: "❤️️",
+      activity: [
+        {
+          type: "gift_money",
+          name: "Tặng tiền mừng tốt nghiệp"
+        },
+        {
+          type: "attend_ceremony",
+          name: "Đi tham dự lễ tốt nghiệp"
+        },
+        {
+          type: "throw_party",
+          name: "Tổ chức tiệc tốt nghiệp"
+        }
+      ]
+    },
+    {
+      id: 6,
+      name: "Kết hôn",
+      icon: "❤️️",
+      activity: [
+        {
+          type: "wedding_gift",
+          name: "Mua quà cưới tặng cả hai bạn trẻ."
+        },
+        {
+          type: "attend_wedding",
+          name: "Tham dự tiệc cưới."
+        },
+        {
+          type: "make_speech",
+          name: "Tuyên bố lời chúc phúc và gửi gắm tình yêu thương."
+        }
+      ]
+    },
+    {
+      id: 7,
+      name: "Đầu năm mới",
+      icon: "❤️️",
+      activity: [
+        {
+          type: "send_lucky_money",
+          name: "Gửi tiền lì xì cho người thân"
+        },
+        {
+          type: "decorate_home",
+          name: "Trang trí nhà cửa đón Tết"
+        },
+        {
+          type: "cook_tet_dinner",
+          name: "Nấu bữa cơm của gia đình trong ngày Tết"
+        }
+      ]
+    },
+  ]
 
   const icoins = [
     {
@@ -48,67 +186,67 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
       count: 2
     },
     {
-      id: 6,
+      id: 7,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 8,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 9,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 10,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 11,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 12,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 13,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 14,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 15,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 16,
       name: "Angry",
       icon: "😡",
       count: 2
     },
     {
-      id: 6,
+      id: 17,
       name: "Angry",
       icon: "😡",
       count: 2
@@ -148,12 +286,27 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
   ];
 
 
+  const handleOpenActivity = (activity) => {
+    setDataActivity(activity);
+    setShowModalActivity(true);
+  };
+
+  const handleCloseActivity = () =>{
+    setShowModalActivity(false);
+  }
+
   const chooseEmoji = (item) => {
     const isSelected = dataChooseEmoji.id === item.id;
-    dispatch(setChooseEmoji(isSelected ? {} : item));
+    dispatch(setChooseEmoji((isSelected ? {} : item),{}));
     setShowModalEmoji(false);
     isShowModal(true);
   };
+
+  const chooseActivity  =(item) =>{
+    dispatch(setChooseEmoji({},item));
+    setShowModalEmoji(false);
+    isShowModal(true);
+  }
   
 
   const handleClose = () => {
@@ -202,18 +355,30 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
               </Tab>
               <Tab eventKey="profile" title="Hoạt Động">
                 <div className="row-activity-container">
+                  <div className="search">
+                  {showModalActivity ?<div onClick={handleCloseActivity} className="search-activity-name"> {dataActivity.name}</div> : null}
                   <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm" />
+                  </div>
                   <div class="row-activity" id="style-1">
                     <div class="row">
-                      {icoins.map((item) => (
+                      {showModalActivity ? (dataActivity.activity.map((item)=>
                         <div class="column-activity-fa">
-                          <div className="column-activity">
+                        <div onClick={()=>{chooseActivity(item)}} className="col column-activity">
+                          <div className="emoji">{item.type}</div>
+                          <span>{item.name}</span>
+                        </div>
+                      </div>
+                      )) :  (activity.map((item) => (
+                        <div onClick={()=>{handleOpenActivity(item)}} class="column-activity-fa">
+                          <div className="col column-activity">
                             <div className="emoji">{item.icon}</div>
                             <span>{item.name}</span>
                           </div>
                           <i class="fa fa-arrow-right"></i>
                         </div>
-                      ))}
+                      )))
+                    }
+                     
                     </div>
                   </div>
                 </div>
