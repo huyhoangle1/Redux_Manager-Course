@@ -108,44 +108,6 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
         }
       ]
     },
-    {
-      id: 6,
-      name: "Kết hôn",
-      icon: "❤️️",
-      activity: [
-        {
-          type: "wedding_gift",
-          name: "Mua quà cưới tặng cả hai bạn trẻ."
-        },
-        {
-          type: "attend_wedding",
-          name: "Tham dự tiệc cưới."
-        },
-        {
-          type: "make_speech",
-          name: "Tuyên bố lời chúc phúc và gửi gắm tình yêu thương."
-        }
-      ]
-    },
-    {
-      id: 7,
-      name: "Đầu năm mới",
-      icon: "❤️️",
-      activity: [
-        {
-          type: "send_lucky_money",
-          name: "Gửi tiền lì xì cho người thân"
-        },
-        {
-          type: "decorate_home",
-          name: "Trang trí nhà cửa đón Tết"
-        },
-        {
-          type: "cook_tet_dinner",
-          name: "Nấu bữa cơm của gia đình trong ngày Tết"
-        }
-      ]
-    },
   ]
 
   const icoins = [
@@ -184,104 +146,7 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
       name: "Đói",
       icon: "😡",
       count: 2
-    },
-    {
-      id: 7,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 8,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 9,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 10,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 11,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 12,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 13,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 14,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 15,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 16,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 17,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 6,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 6,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 6,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 6,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-    {
-      id: 6,
-      name: "Angry",
-      icon: "😡",
-      count: 2
-    },
-
+    }
 
   ];
 
@@ -297,13 +162,21 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
 
   const chooseEmoji = (item) => {
     const isSelected = dataChooseEmoji.id === item.id;
-    dispatch(setChooseEmoji((isSelected ? {} : item),{}));
+    dispatch(setChooseEmoji((isSelected ? {} : item)));
     setShowModalEmoji(false);
     isShowModal(true);
   };
 
-  const chooseActivity  =(item) =>{
-    dispatch(setChooseEmoji({},item));
+  const chooseActivity= (item) =>{
+    const activityItem = dataActivity.activity.filter((a) => a.name === item.name);
+    const result = {
+      id: dataActivity.id,
+      name: dataActivity.name,
+      icon: dataActivity.icon,
+      activity: activityItem
+    };
+    console.log(result);
+    dispatch(setChooseEmoji(result));
     setShowModalEmoji(false);
     isShowModal(true);
   }

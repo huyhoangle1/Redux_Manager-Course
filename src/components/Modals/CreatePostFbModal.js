@@ -105,12 +105,18 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
     return result;
   };
   const getAssignedNamesEmoji = () => {
-    return `đang cảm thấy ${[chooseEmoji][0]?.name?.toLowerCase()} ${[chooseEmoji][0].icon}`;
+    console.log(chooseEmoji.name);
+    if(chooseEmoji.activity) {
+      return `${chooseEmoji.name.toLowerCase().slice(0, -3)} ${(chooseEmoji.activity)[0].name.toLowerCase()}`;
+    }else{
+      return `đang cảm thấy ${[chooseEmoji][0]?.name?.toLowerCase()} ${[chooseEmoji][0].icon}`;
+    }
   };
 
 
   // Hàm focus vào component khi click vào custom-editor
   const focus = () => {
+    console.log(chooseFriends);
     const content = editorState.getCurrentContent().getPlainText(); // lấy text input trong editor
     console.log(content);
     editorRef.current.focus();
