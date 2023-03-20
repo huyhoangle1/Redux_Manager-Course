@@ -6,11 +6,21 @@ import "draft-js/dist/Draft.css";
 import createImagePlugin from 'draft-js-image-plugin';
 import Dropzone from 'react-dropzone';
 import { useSelector, useDispatch } from "react-redux";
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions, setShowModalEvent }) => {
   const chooseFriends = useSelector((state) => state.chooseFriends);
   const chooseEmoji = useSelector((state) => state.chooseEmoji);
   const chooseAddress = useSelector((state) => state.chooseAddress);
+
+  const getRenderTooltip = (content) => {
+    return (
+      <Tooltip id="tooltip">
+        <div style={{padding: 5, fontSize: 12}}>{content}</div>
+      </Tooltip>
+    )
+  }
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -107,9 +117,9 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
   };
 
   const getAssignedEmoji = () => {
-    if(chooseEmoji.activity) {
+    if (chooseEmoji.activity) {
       return `${chooseEmoji.name.toLowerCase().slice(0, -3)} ${(chooseEmoji.activity)[0].name.toLowerCase()}`;
-    }else{
+    } else {
       return `đang cảm thấy ${[chooseEmoji][0]?.name?.toLowerCase()} ${[chooseEmoji][0].icon}`;
     }
   };
@@ -154,7 +164,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                         {Object.keys(chooseEmoji).length > 0 && getAssignedEmoji()} {" "}
                         {chooseFriends.length > 0 && getAssignedNames()} {" "}
                         {Object.keys(chooseAddress).length > 0 && getAssignedAddress()}
-                        </p>
+                      </p>
 
                     </div>
                     <div class="privacy">
@@ -219,35 +229,87 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                 <div class="options">
                   <p onClick={handleOpenModalOptions}>Thêm vào bài viết của bạn</p>
                   <ul class="list">
-                    <li onClick={handleOpenChooseImage}><img src="./img/gallery.svg" alt="" /></li>
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={getRenderTooltip("Ảnh/video")}
+                    >
+                      <li onClick={handleOpenChooseImage}><img src="./img/gallery.svg" alt="" /></li>
+                    </OverlayTrigger>
+
                     {chooseFriends.length > 0 ? (
-                      <li onClick={handleOpenModalFriends} style={{ backgroundColor: '#caeef9' }}>
-                        <img src="./img/tag.svg" alt="" />
-                      </li>
+                      <OverlayTrigger
+                        placement="top"
+                        overlay={getRenderTooltip("Gắn thẻ người khác")}
+                      >
+                        <li onClick={handleOpenModalFriends} style={{ backgroundColor: '#caeef9' }}>
+                          <img src="./img/tag.svg" alt="" />
+                        </li>
+                      </OverlayTrigger>
                     ) : (
-                      <li onClick={handleOpenModalFriends}>
-                        <img src="./img/tag.svg" alt="" />
-                      </li>
+                      <OverlayTrigger
+                        placement="top"
+                        overlay={getRenderTooltip("Gắn thẻ người khác")}
+                      >
+                        <li onClick={handleOpenModalFriends}>
+                          <img src="./img/tag.svg" alt="" />
+                        </li>
+                      </OverlayTrigger>
                     )}
                     {Object.keys(chooseEmoji).length > 0 ? (
-                      <li onClick={handleOpenModalEmoji} style={{ backgroundColor: '#fdefc9' }}>
-                        <img src="./img/emoji.svg" alt="" />
-                      </li>
+                      <OverlayTrigger
+                        placement="top"
+                        overlay={getRenderTooltip("Cảm xúc/hoạt động")}
+                      >
+                        <li onClick={handleOpenModalEmoji} style={{ backgroundColor: '#fdefc9' }}>
+                          <img src="./img/emoji.svg" alt="" />
+                        </li>
+                      </OverlayTrigger>
+
                     ) : (
-                      <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
+                      <OverlayTrigger
+                        placement="top"
+                        overlay={getRenderTooltip("Cảm xúc/hoạt động")}
+                      >
+                        <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
+                      </OverlayTrigger>
+
                     )}
                     {Object.keys(chooseAddress).length > 0 ? (
-                      <li onClick={handleOpenModalCheckIn} style={{ backgroundColor: '#f9a19d' }}>
-                        <img style={{width:22}} src="	https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/uywzfiZad5N.png" alt="" />
-                      </li>
+                      <OverlayTrigger
+                        placement="top"
+                        overlay={getRenderTooltip("Check in")}
+                      >
+                        <li onClick={handleOpenModalCheckIn} style={{ backgroundColor: '#f9a19d' }}>
+                          <img style={{ width: 22 }} src="	https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/uywzfiZad5N.png" alt="" />
+                        </li>
+                      </OverlayTrigger>
+
                     ) : (
-                      <li onClick={handleOpenModalCheckIn}>
-                      <img style={{width:22}} src="	https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/uywzfiZad5N.png" alt="" />
-                    </li>
+                      <OverlayTrigger
+                        placement="top"
+                        overlay={getRenderTooltip("Check in")}
+                      >
+                        <li onClick={handleOpenModalCheckIn}>
+                          <img style={{ width: 22 }} src="	https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/uywzfiZad5N.png" alt="" />
+                        </li>
+                      </OverlayTrigger>
+
                     )}
-                   
-                    <li onClick={handleOpenModalEvent}><img style={{width:22}} src="	https://static.xx.fbcdn.net/rsrc.php/v3/yY/r/CenxFlWjtJO.png" alt="" /></li>
-                    <li onClick={handleOpenModalOptions}><img src="./img/more.svg" alt="" /></li>
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={getRenderTooltip("Sự kiện trong đời")}
+                    >
+                      <li onClick={handleOpenModalEvent}><img style={{ width: 22 }} src="	https://static.xx.fbcdn.net/rsrc.php/v3/yY/r/CenxFlWjtJO.png" alt="" /></li>
+                    </OverlayTrigger>
+
+
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={getRenderTooltip("Xem thêm")}
+                    >
+                      <li onClick={handleOpenModalOptions}><img src="./img/more.svg" alt="" /></li>
+                    </OverlayTrigger>
+
                   </ul>
                 </div>
                 <button onClick={focus}>Post</button>

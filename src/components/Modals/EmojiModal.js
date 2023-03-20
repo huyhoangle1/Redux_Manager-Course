@@ -20,92 +20,88 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
       activity: [
         {
           type: "❤️️",
-          name: "Gửi quà tặng đến người nhận"
+          name: "tình bạn"
         },
         {
           type: "❤️️",
-          name: "Tổ chức tiệc sinh nhật"
+          name: "sinh nhật"
         },
         {
           type: "❤️️",
-          name: "Hát mừng sinh nhật"
+          name: "ngày đặc biệt của bạn"
+        },
+        {
+          type: "❤️️",
+          name: "giáng sinh"
+        },
+        {
+          type: "❤️️",
+          name: "năm mới"
+        },
+        {
+          type: "❤️️",
+          name: "thành công"
+        },
+        {
+          type: "❤️️",
+          name: "kì nghỉ"
+        },
+        {
+          type: "❤️️",
+          name: "tình yêu"
         }
       ]
     },
     {
       id: 2,
-      name: "Kỷ niệm ngày cưới...",
+      name: "Đang xem...",
       icon: "❤️️",
       activity: [
-        {
-          type: "❤️️",
-          name: "Mua hoa tặng vợ"
-        },
-        {
-          type: "❤️️",
-          name: "Trao những món quà đặc biệt"
-        },
-        {
-          type: "❤️️",
-          name: "Đi ăn tối tại nhà hàng sang trọng"
-        }
       ]
     },
     {
       id: 3,
-      name: "Thành công trong công việc mới...",
+      name: "Đang ăn...",
       icon: "❤️️",
       activity: [
         {
           type: "❤️️",
-          name: "Tặng phiếu giảm giá cho học viện lập trình"
+          name: "trưa"
         },
         {
           type: "❤️️",
-          name: "Đi chơi sau giờ làm để tưởng nhớ thành tích xem phim chiếu rạp"
+          name: "tối"
         },
         {
           type: "❤️️",
-          name: "Gửi lời chúc mừng qua email hoặc đường dây nóng"
+          name: "bữa sáng"
         }
       ]
     },
     {
       id: 4,
-      name: "Tân gia",
+      name: "đang chơi...",
       icon: "❤️️",
       activity: [
         {
           type: "❤️️",
-          name: "Mua quà tặng cho gia chủ"
+          name: "liên quân mobile"
         },
         {
           type: "❤️️",
-          name: "Tham quan chơi và ngâm cứu địa lý căn nhà mới"
+          name: "freefire"
         },
         {
           type: "❤️️",
-          name: "Ăn uống kế hoạch ở nhà"
+          name: "chess"
         }
       ]
     },
     {
       id: 5,
-      name: "Tốt nghiệp đại học",
+      name: "đang ủng hộ",
       icon: "❤️️",
       activity: [
-        {
-          type: "gift_money",
-          name: "Tặng tiền mừng tốt nghiệp"
-        },
-        {
-          type: "attend_ceremony",
-          name: "Đi tham dự lễ tốt nghiệp"
-        },
-        {
-          type: "throw_party",
-          name: "Tổ chức tiệc tốt nghiệp"
-        }
       ]
     },
   ]
@@ -175,7 +171,6 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
       icon: dataActivity.icon,
       activity: activityItem
     };
-    console.log(result);
     dispatch(setChooseEmoji(result));
     setShowModalEmoji(false);
     isShowModal(true);
@@ -216,7 +211,7 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
                     <div class="row row-cols-2">
                     {icoins.map((item) => (
                       <div key={item.id} class="col">
-                          <div onClick={() => chooseEmoji(item)} className={`column-feeling ${[dataChooseEmoji][0].id === item.id ? "selected" : ""}`}>
+                          <div onClick={() => chooseEmoji(item)} className={`column-feeling ${[dataChooseEmoji][0].name === item.name ? "selected" : ""}`}>
                             <div className="emoji">{item.icon}</div>
                             <span>{item.name}</span>
                           </div>
@@ -234,14 +229,14 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
                   </div>
                   <div class="row-activity" id="style-1">
                     <div class="row">
-                      {showModalActivity ? (dataActivity.activity.map((item)=>
+                      {showModalActivity ? (dataActivity.activity.length > 0 ? (dataActivity.activity.map((item)=>
                         <div class="column-activity-fa">
                         <div onClick={()=>{chooseActivity(item)}} className="col column-activity">
                           <div className="emoji">{item.type}</div>
                           <span>{item.name}</span>
                         </div>
                       </div>
-                      )) :  (activity.map((item) => (
+                      )) :(<div style={{textAlign:'center', fontSize:20 , fontWeight: 600, marginTop:30}}>Không tìm thấy kết quả</div>)) :  (activity.map((item) => (
                         <div onClick={()=>{handleOpenActivity(item)}} class="column-activity-fa">
                           <div className="col column-activity">
                             <div className="emoji">{item.icon}</div>
