@@ -216,7 +216,7 @@ const EmojiModal = ({ showModalEmoji, setShowModalEmoji, isShowModal }) => {
                     <div class="row row-cols-2">
                     {icoins.map((item) => (
                       <div key={item.id} class="col">
-                          <div onClick={() => chooseEmoji(item)} class={`column-feeling ${[dataChooseEmoji][0].id === item.id ? "selected" : ""}`}>
+                          <div onClick={() => chooseEmoji(item)} className={`column-feeling ${[dataChooseEmoji][0].id === item.id ? "selected" : ""}`}>
                             <div className="emoji">{item.icon}</div>
                             <span>{item.name}</span>
                           </div>

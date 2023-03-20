@@ -564,6 +564,11 @@ div#contained-modal-title-vcenter {
     border-radius: 5px;
 }
 
+.info-address.selected {
+    background-color: #CFD1D5;
+    border-radius: 5px;
+}
+
 .checkin-list-container .checkin-list .info-address .title-address span{
     font-size: 13px;
 }

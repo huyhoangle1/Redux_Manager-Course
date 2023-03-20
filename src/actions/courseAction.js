@@ -68,3 +68,10 @@ export const setChooseEmoji = chooseEmoji => {
     };
 };
 
+export const setChooseAddress = chooseAddress => {
+    return {
+        type: types.SET_CHOOSE_ADDRESS,
+        chooseAddress,
+    };
+};
+

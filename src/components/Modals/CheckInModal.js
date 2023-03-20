@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Modal, Button, Form, InputGroup } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { editExercise } from "../../actions/courseAction";
+import { Modal, Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { setChooseAddress } from "../../actions/courseAction";
 
 const CheckInModal = ({ showModalCheckin, setShowModalCheckin, isShowModal }) => {
+
+  const dispatch = useDispatch();
+  const chooseAddress = useSelector((state) => state.chooseAddress);
 
   const MockDataCheckin = [
     {
@@ -95,6 +98,13 @@ const CheckInModal = ({ showModalCheckin, setShowModalCheckin, isShowModal }) =>
       "longitude": 105.847858
     }]
 
+    const handleChooseAddress = (item) => {
+      const isSelected = chooseAddress?.address === item.address;
+      console.log(isSelected);
+      dispatch(setChooseAddress((isSelected ? {} : item)));
+      setShowModalCheckin(false);
+      isShowModal(true)
+    }
 
   const handleClose = () => {
     setShowModalCheckin(false);
@@ -118,14 +128,13 @@ const CheckInModal = ({ showModalCheckin, setShowModalCheckin, isShowModal }) =>
         <Modal.Body>
           <div className="header-model-input-style">
             <i class="fa fa-search"></i>
-            <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm bạn bè" />
-            <span className="lblDone">Xong</span>
+            <Form.Control className="input-search-friend" size="lg" type="text" placeholder="Tìm kiếm vị trí" />
           </div>
           <div className="checkin-list-container">
             <div className="checkin-list" id="style-1">
               {MockDataCheckin.map((item) =>
-                <div key={item.id} className="info-address">
-                  <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yN/r/5AmCdexsMi-.png" alt={item.name} />
+                <div key={item.id} className={`info-address ${chooseAddress?.name === item.name ? "selected" : ""}`} onClick={()=>{handleChooseAddress(item)}}>
+                  <img onClick={()=>{console.log(chooseAddress[0].name, item.name)}} src="https://static.xx.fbcdn.net/rsrc.php/v3/yN/r/5AmCdexsMi-.png" alt={item.name} />
                   <div className="title-address">
                     <span>{item.name}</span>
                     <div>{item.address}</div>

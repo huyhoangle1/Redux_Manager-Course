@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions, setShowModalEvent }) => {
   const chooseFriends = useSelector((state) => state.chooseFriends);
   const chooseEmoji = useSelector((state) => state.chooseEmoji);
+  const chooseAddress = useSelector((state) => state.chooseAddress);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -104,8 +105,8 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
     }
     return result;
   };
-  const getAssignedNamesEmoji = () => {
-    console.log(chooseEmoji.name);
+
+  const getAssignedEmoji = () => {
     if(chooseEmoji.activity) {
       return `${chooseEmoji.name.toLowerCase().slice(0, -3)} ${(chooseEmoji.activity)[0].name.toLowerCase()}`;
     }else{
@@ -113,10 +114,14 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
     }
   };
 
+  const getAssignedAddress = () => {
+    return `tại ${chooseAddress.name}`
+  };
+
 
   // Hàm focus vào component khi click vào custom-editor
   const focus = () => {
-    console.log(chooseFriends);
+    console.log(chooseAddress);
     const content = editorState.getCurrentContent().getPlainText(); // lấy text input trong editor
     console.log(content);
     editorRef.current.focus();
@@ -146,8 +151,10 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                   <div class="details">
                     <div>
                       <p style={{ fontSize: 14 }} onClick={() => console.log(showModal)}>Hoàng Lê {" "}
-                        {Object.keys(chooseEmoji).length > 0 && getAssignedNamesEmoji()} {" "}
-                        {chooseFriends.length > 0 && getAssignedNames()}</p>
+                        {Object.keys(chooseEmoji).length > 0 && getAssignedEmoji()} {" "}
+                        {chooseFriends.length > 0 && getAssignedNames()} {" "}
+                        {Object.keys(chooseAddress).length > 0 && getAssignedAddress()}
+                        </p>
 
                     </div>
                     <div class="privacy">
@@ -229,8 +236,17 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                     ) : (
                       <li onClick={handleOpenModalEmoji}><img src="./img/emoji.svg" alt="" /></li>
                     )}
-                    <li onClick={handleOpenModalCheckIn}><img src="./img/mic.svg" alt="" /></li>
-                    <li onClick={handleOpenModalEvent}><img src="./img/mic.svg" alt="" /></li>
+                    {Object.keys(chooseAddress).length > 0 ? (
+                      <li onClick={handleOpenModalCheckIn} style={{ backgroundColor: '#f9a19d' }}>
+                        <img style={{width:22}} src="	https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/uywzfiZad5N.png" alt="" />
+                      </li>
+                    ) : (
+                      <li onClick={handleOpenModalCheckIn}>
+                      <img style={{width:22}} src="	https://static.xx.fbcdn.net/rsrc.php/v3/yy/r/uywzfiZad5N.png" alt="" />
+                    </li>
+                    )}
+                   
+                    <li onClick={handleOpenModalEvent}><img style={{width:22}} src="	https://static.xx.fbcdn.net/rsrc.php/v3/yY/r/CenxFlWjtJO.png" alt="" /></li>
                     <li onClick={handleOpenModalOptions}><img src="./img/more.svg" alt="" /></li>
                   </ul>
                 </div>
