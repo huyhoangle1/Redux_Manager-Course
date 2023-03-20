@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 import { Button, Modal } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import EditExercisesModel from "./EditExercisesModal";
 import { useDispatch } from "react-redux";
+import { useReactToPrint } from 'react-to-print'
 import { exerciseStatus } from "../../actions/courseAction";
 
 const InfoModel = ({ course, showModal, isShowModal }) => {
@@ -14,6 +15,12 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
     setEditItem(item);
     isExercisesShowModal(true);
   };
+  const componentRef = useRef()
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+      documentTitle: 'Bill Room',
+      onAfterPrint: () => toast.success('Print Success!')
+    })
 
   const handleClose = () => {
     isShowModal(false);
@@ -51,7 +58,7 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
             Course Information
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body ref={componentRef}>
           <h4>Course Name: {course?.title}</h4>
           <p>Course Description: {course?.description}</p>
           <h2>Exercise List:</h2>
@@ -79,6 +86,7 @@ const InfoModel = ({ course, showModal, isShowModal }) => {
               ))}
             </tbody>
           </Table>
+          <Button onClick={handlePrint}>Print</Button>
         </Modal.Body>
         <div>
           {showExercisesModal ? (
