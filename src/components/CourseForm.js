@@ -8,6 +8,7 @@ import { Table } from 'react-bootstrap';
 import moment from 'moment'
 
 const CourseForm = () => {
+  const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
   let history = useNavigate()
 
@@ -55,14 +56,14 @@ const CourseForm = () => {
       title: exerciseTitle,
       completed: false
     };
-    if(exercises.length === 0) {
+    if (exercises.length === 0) {
       console.log(exerciseTitle);
-      if(exerciseTitle === ''){
+      if (exerciseTitle === '') {
         alert('Không được để trống')
-      }else{
+      } else {
         setExercises([...exercises, newExercise]);
       }
-    }else{
+    } else {
       setExercises([...exercises, newExercise]);
     }
     setExerciseTitle('');
@@ -77,101 +78,166 @@ const CourseForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    const newExercise = {
-      id: exerciseId,
-      title: exerciseTitle,
-      completed: false
-    };
-    const arr = [newExercise];
-    const exercisesLength = exercises.filter((item) => item.completed === true).length
-    const course = {
-      title,
-      category,
-      description,
-      favorite: false,
-      startDay,
-      endDay,
-      exercisesLength: exercisesLength,
-      length: exercises.length,
-      tasks: exercises.length > 0 ? exercises : [...arr],
-      imagepath: imagePath
-    };
-    const startDate = new Date(startDay);
-    const endDate = new Date(endDay);
-    const today = new Date();
-    if(!title){
-      alert('Vui lòng điền title');
-    }else if(!category){
-      alert('Vui lòng điền category');
-    }else if(description.length < 200){
-      alert('Vui lòng điền description và điền ít nhất 200 kí tự');
-    }else if (!startDay || !moment(startDay, 'YYYY-MM-DD', true).isValid()) {
-      alert('Vui lòng nhập start day theo định dạng YYYY-MM-DD');
-      setStartDay('');
-    }else if (!endDay || !moment(endDay, 'YYYY-MM-DD', true).isValid()) {
-      alert('Vui lòng nhập end day theo định dạng YYYY-MM-DD');
-      setEndDay('');
-    }else if (startDate <= today) {
-      alert("Ngày bắt đầu không được phép trước ngày hiện tại.");
-      setStartDay('');
-    } else if (startDate > endDate) {
-      alert("Ngày kết thúc không được phép trước ngày bắt đầu.");
-      setEndDay('');
-    } else if (exercises.some(exercise => !exercise.title.trim())) {
-      alert('Vui lòng điền tên cho tất cả các bài tập');
-    } else {
+
+    const form = e.currentTarget;
+    console.log(form.checkValidity());
+    console.log('aaaa');
+    if (form.checkValidity() === false) {
+      console.log('aaaa');
+      e.stopPropagation();
+      setValidated(true);
+      return;
+    }
+
+    const valid = !!title && !!category && description.length >= 200;
+
+    if (valid) {
+      const newExercise = {
+        id: exerciseId,
+        title: exerciseTitle,
+        completed: false
+      };
+      const arr = [newExercise];
+      const exercisesLength = exercises.filter((item) => item.completed === true).length
+      const course = {
+        title,
+        category,
+        description,
+        favorite: false,
+        startDay,
+        endDay,
+        exercisesLength: exercisesLength,
+        length: exercises.length,
+        tasks: exercises.length > 0 ? exercises : [...arr],
+        imagepath: imagePath
+      };
       dispatch(addCourse(course));
       setTitle('');
       setCategory('');
       setDescription('');
       setImagePath('');
+
+      setValidated(valid);
+
       alert('Add successfully');
       history('/allCourse')
+    } else {
+      setValidated(valid);
     }
   };
 
+
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form noValidate onSubmit={handleSubmit} validated={validated}>
       <h2 style={{ textAlign: 'center', marginTop: 30 }}>Add Course</h2>
-      <Form.Group className="mb-3 mx-5">
-        <Form.Label type="title"><h3>Course Title:</h3></Form.Label>
-        <Form.Control value={title} id="title" type="text" onChange={handleTitleChange} placeholder="Input Title" />
+      <Form.Group className="mb-3 mx-5" controlId="validationCustom01">
+        <Form.Label type="title">
+          <h3>Course Title:</h3>
+        </Form.Label>
+        <Form.Control
+          required
+          value={title}
+          type="text"
+          onChange={handleTitleChange}
+          placeholder="Input Title"
+        />
+        <Form.Control.Feedback type="invalid">
+          Please enter a valid course title.
+        </Form.Control.Feedback>
       </Form.Group>
-      <Form.Group className="mb-3 mx-5">
+      <Form.Group className="mb-3 mx-5" controlId="validationCustom02">
         <Form.Label><h3>Category:</h3></Form.Label>
-        <Form.Control value={category} id="category" type="text" onChange={handleCategoryChange} placeholder="Input category" />
+        <Form.Control
+          required
+          value={category}
+          type="text"
+          onChange={handleCategoryChange}
+          placeholder="Input category"
+        />
+        <Form.Control.Feedback type="invalid">
+          Please enter a valid category.
+        </Form.Control.Feedback>
       </Form.Group>
-      <Form.Group className="mb-3 mx-5">
-        <Form.Label><h3>Description</h3></Form.Label>
-        <Form.Control value={description} id="description" type="text" onChange={handleDescriptionChange} placeholder="Input description" />
+      <Form.Group className="mb-3 mx-5" controlId="validationCustom03">
+        <Form.Label>
+          <h3>Description</h3>
+        </Form.Label>
+        <Form.Control
+          required
+          value={description}
+          as="textarea"
+          rows={10}
+          minLength={200}
+          onChange={handleDescriptionChange}
+          placeholder="Input description"
+          pattern=".{200,}"
+        />
+        <Form.Control.Feedback type="invalid">
+          Please enter a valid description with minimum 200 lines.
+        </Form.Control.Feedback>
       </Form.Group>
-      <Form.Group className="mb-3 mx-5">
-        <Form.Label><h3>Start Day</h3></Form.Label>
-        <Form.Control value={startDay} id="description" type="date" onChange={handleStartDay} placeholder="Input Start Day" />
+      <Form.Group className="mb-3 mx-5" controlId="validationCustom04">
+        <Form.Label>
+          <h3>Start Day</h3>
+        </Form.Label>
+        <Form.Control
+          required
+          value={startDay}
+          type="date"
+          onChange={handleStartDay}
+          placeholder="Input Start Day"
+        />
+        <Form.Control.Feedback type="invalid">
+          Please choose a start day.
+        </Form.Control.Feedback>
       </Form.Group>
-      <Form.Group className="mb-3 mx-5">
-        <Form.Label><h3>End Day</h3></Form.Label>
-        <Form.Control value={endDay} id="description" type="date" onChange={handleEndDay} placeholder="Input End Day" />
+      <Form.Group className="mb-3 mx-5" controlId="validationCustom05">
+        <Form.Label>
+          <h3>End Day</h3>
+        </Form.Label>
+        <Form.Control
+          required
+          value={endDay}
+          type="date"
+          onChange={handleEndDay}
+          placeholder="Input End Day"
+        />
+        <Form.Control.Feedback type="invalid">
+          Please choose an end day.
+        </Form.Control.Feedback>
       </Form.Group>
       <Form.Group controlId="formFileSm" className="mb-3 mx-5">
         <Form.Label>Image: </Form.Label>
-        <Form.Control type="file" accept='.jpg, .png, .jpeg' onChange={onChangeImage} size="sm" />
+        <Form.Control
+          type="file"
+          accept=".jpg,.png,.jpeg"
+          onChange={onChangeImage}
+          size="sm"
+        />
       </Form.Group>
       <Form.Group className="mb-3 mx-5">
-        <Form.Label><h3>Exercise Title:</h3></Form.Label>
-        <Form.Control value={exerciseTitle} id="exerciseTitle" type="text" onChange={handleExerciseTitleChange} placeholder="Input exercise title" />
+        <Form.Label>
+          <h3>Exercise Title:</h3>
+        </Form.Label>
+        <Form.Control
+          value={exerciseTitle}
+          // id="exerciseTitle"
+          type="text"
+          onChange={handleExerciseTitleChange}
+          placeholder="Input exercise title"
+        />
       </Form.Group>
-      <div className='d-flex justify-content-center'>
-        <Button className='mx-5' variant="primary" type="submit">
+      <div className="d-flex justify-content-center">
+        <Button className="mx-5" variant="primary" type="submit">
           Submit
         </Button>
         <Button variant="secondary" type="button" onClick={handleAddExercise}>
           Add Exercise
         </Button>
       </div>
-      {exercises.length > 0 &&
+      {exercises.length > 0 && (
         <div>
-          <h3 className='mx-5 my-3'>Danh sách bài học:</h3>
+          <h3 className="mx-5 my-3">Danh sách bài học:</h3>
           <ul>
             <Table striped bordered hover>
               <thead>
@@ -181,7 +247,7 @@ const CourseForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {exercises.map(exercise => (
+                {exercises.map((exercise) => (
                   <tr key={exercise.id}>
                     <td>{exercise.id}</td>
                     <td>{exercise.title}</td>
@@ -191,9 +257,9 @@ const CourseForm = () => {
             </Table>
           </ul>
         </div>
-      }
-
+      )}
     </Form>
+
   );
 };
 
