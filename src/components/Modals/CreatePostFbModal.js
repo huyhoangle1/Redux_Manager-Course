@@ -17,7 +17,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
   const getRenderTooltip = (content) => {
     return (
       <Tooltip id="tooltip">
-        <div style={{padding: 5, fontSize: 12}}>{content}</div>
+        <div style={{ padding: 5, fontSize: 12 }}>{content}</div>
       </Tooltip>
     )
   }
@@ -103,17 +103,13 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
     closeModel()
   };
 
+  const count = chooseFriends.length;
   const getAssignedNames = () => {
-    const count = chooseFriends.length;
-    let result = "cùng với ";
-    if (count === 1) {
-      result += chooseFriends[0];
-    } else if (count === 2) {
-      result += `${chooseFriends[0]} và ${chooseFriends[1]}`;
-    } else if (count > 2) {
-      result += `${chooseFriends[0]}, ${chooseFriends[1]} và ${(count - 2)} người khác`;
-    }
-    return result;
+    return (
+      count === 1 ? <><a class="text-underline-hover" onClick={handleOpenModalFriends}>cùng với {chooseFriends[0]}</a></> :
+        count === 2 ? <>cùng với <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[0]}</a> và <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[1]}</a></> :
+          count > 2 ? <>cùng với <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[0]}</a>, <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[1]}</a> và <a class="text-underline-hover" onClick={handleOpenModalFriends}>{(count - 2)} người khác</a></> : null
+    )
   };
 
   const getAssignedEmoji = () => {
@@ -159,7 +155,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
                 <div class="content">
                   <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
                   <div class="details">
-                    <div>
+                    <div style={{ display: "flex" }}>
                       <p style={{ fontSize: 14 }} onClick={() => console.log(showModal)}>Hoàng Lê {" "}
                         {Object.keys(chooseEmoji).length > 0 && getAssignedEmoji()} {" "}
                         {chooseFriends.length > 0 && getAssignedNames()} {" "}

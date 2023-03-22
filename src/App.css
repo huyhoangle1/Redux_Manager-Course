@@ -717,6 +717,18 @@ button.btnAddImages span{
     margin-left: 5px;
     font-weight: bold;
 } 
+.text-underline-hover {
+    text-decoration: none;
+    color: #050505;
+    cursor: pointer;
+}
+
+.text-underline-hover:hover {
+    text-decoration: underline;
+    color: #050505;
+    cursor: pointer;
+}
+
 
 
 
