@@ -1,13 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Button, Popover, Tooltip, OverlayTrigger } from "react-bootstrap";
 import "./style.css";
 import { Editor, EditorState } from 'draft-js';
 import "draft-js/dist/Draft.css";
 import createImagePlugin from 'draft-js-image-plugin';
 import Dropzone from 'react-dropzone';
 import { useSelector, useDispatch } from "react-redux";
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
 
 const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFriends, setShowModalEmoji, setShowModalCheckin, setShowModalOptions, setShowModalEvent }) => {
   const chooseFriends = useSelector((state) => state.chooseFriends);
@@ -19,6 +17,32 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
       <Tooltip id="tooltip">
         <div style={{ padding: 5, fontSize: 12 }}>{content}</div>
       </Tooltip>
+    )
+  }
+
+  const getRenderTooltipProfile = (content) => {
+    return (
+      <Popover id="popover-basic">
+      <Popover.Body>
+        <div className="popover-body-profile">
+          <div className="popover-profile-content">
+            <div className="popover-image">
+              <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
+            </div>
+            <div className="popover-friends-work">
+              <span>{content}</span>
+              <li><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/G89_JvcfOgH.png" alt="" />1 bạn chung &nbsp; <strong>Nguyễn Thị Hoài</strong></li>
+              <li><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/wGXjz-n9OX9.png" alt="" />Làm việc tại &nbsp; <strong>Hà Nội</strong></li>
+            </div>
+          </div>
+          <div className="popover-button">
+            <Button className="me-3">Thêm bạn bè</Button>
+            <Button className="me-3">Nhắn Tin</Button>
+            <Button style={{width: 30}}>...</Button>
+          </div>
+        </div>
+      </Popover.Body>
+    </Popover>
     )
   }
   const dispatch = useDispatch();
@@ -106,7 +130,18 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
   const count = chooseFriends.length;
   const getAssignedNames = () => {
     return (
-      count === 1 ? <><a class="text-underline-hover" onClick={handleOpenModalFriends}>cùng với {chooseFriends[0]}</a></> :
+      count === 1 ? <>
+
+        cùng với <a class="text-underline-hover" onClick={handleOpenModalFriends}>
+          <OverlayTrigger
+            placement="right"
+            overlay={getRenderTooltipProfile(chooseFriends[0])}
+          >
+            <span> {chooseFriends[0]}</span>
+          </OverlayTrigger></a>
+
+
+      </> :
         count === 2 ? <>cùng với <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[0]}</a> và <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[1]}</a></> :
           count > 2 ? <>cùng với <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[0]}</a>, <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[1]}</a> và <a class="text-underline-hover" onClick={handleOpenModalFriends}>{(count - 2)} người khác</a></> : null
     )

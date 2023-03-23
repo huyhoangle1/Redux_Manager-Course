@@ -81,9 +81,7 @@ const CourseForm = () => {
 
     const form = e.currentTarget;
     console.log(form.checkValidity());
-    console.log('aaaa');
     if (form.checkValidity() === false) {
-      console.log('aaaa');
       e.stopPropagation();
       setValidated(true);
       return;
