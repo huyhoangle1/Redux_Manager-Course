@@ -23,26 +23,26 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
   const getRenderTooltipProfile = (content) => {
     return (
       <Popover id="popover-basic">
-      <Popover.Body>
-        <div className="popover-body-profile">
-          <div className="popover-profile-content">
-            <div className="popover-image">
-              <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
+        <Popover.Body>
+          <div className="popover-body-profile">
+            <div className="popover-profile-content">
+              <div className="popover-image">
+                <img src="./assets/img/Home/faptv-bg.jpg" alt="" />
+              </div>
+              <div className="popover-friends-work">
+                <span>{content}</span>
+                <li><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/G89_JvcfOgH.png" alt="" />1 bạn chung &nbsp; <strong>Nguyễn Thị Hoài</strong></li>
+                <li><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/wGXjz-n9OX9.png" alt="" />Làm việc tại &nbsp; <strong>Hà Nội</strong></li>
+              </div>
             </div>
-            <div className="popover-friends-work">
-              <span>{content}</span>
-              <li><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yk/r/G89_JvcfOgH.png" alt="" />1 bạn chung &nbsp; <strong>Nguyễn Thị Hoài</strong></li>
-              <li><img src="https://static.xx.fbcdn.net/rsrc.php/v3/yi/r/wGXjz-n9OX9.png" alt="" />Làm việc tại &nbsp; <strong>Hà Nội</strong></li>
+            <div className="popover-button">
+              <Button className="me-3">Thêm bạn bè</Button>
+              <Button className="me-3">Nhắn Tin</Button>
+              <Button style={{ width: 30 }}>...</Button>
             </div>
           </div>
-          <div className="popover-button">
-            <Button className="me-3">Thêm bạn bè</Button>
-            <Button className="me-3">Nhắn Tin</Button>
-            <Button style={{width: 30}}>...</Button>
-          </div>
-        </div>
-      </Popover.Body>
-    </Popover>
+        </Popover.Body>
+      </Popover>
     )
   }
   const dispatch = useDispatch();
@@ -131,7 +131,6 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
   const getAssignedNames = () => {
     return (
       count === 1 ? <>
-
         cùng với <a class="text-underline-hover" onClick={handleOpenModalFriends}>
           <OverlayTrigger
             placement="right"
@@ -139,8 +138,6 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
           >
             <span> {chooseFriends[0]}</span>
           </OverlayTrigger></a>
-
-
       </> :
         count === 2 ? <>cùng với <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[0]}</a> và <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[1]}</a></> :
           count > 2 ? <>cùng với <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[0]}</a>, <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[1]}</a> và <a class="text-underline-hover" onClick={handleOpenModalFriends}>{(count - 2)} người khác</a></> : null
