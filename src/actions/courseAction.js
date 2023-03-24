@@ -75,3 +75,10 @@ export const setChooseAddress = chooseAddress => {
     };
 };
 
+export const setAccessTokenLogin = data => {
+    return {
+        type: types.ACCESS_TOKEN_LOGIN,
+        data,
+    };
+};
+

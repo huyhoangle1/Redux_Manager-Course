@@ -7,11 +7,14 @@ import rootReducer from './reducers/rootReducer';
 import App from './App';
 import "./index.css"
 
-const store = createStore(rootReducer);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-ReactDOM.render(
-  <Provider store={store}>
+const store = createStore(rootReducer);
+root.render(
+  <React.StrictMode>
+     <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
+
