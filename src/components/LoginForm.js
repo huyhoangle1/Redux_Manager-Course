@@ -13,8 +13,8 @@ export default function (props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const changeAuthMode = () => {
-    setAuthMode(authMode === "signin" ? "signup" : "signin")
+  const changeAuthMode = (status) => {
+    setAuthMode(status);
   }
 
   const createUser = async () => {
@@ -27,6 +27,10 @@ export default function (props) {
       const dataInfo = await Api.login( email, password );
       dispatch(setAccessTokenLogin(dataInfo));
       message.success("Login successful")
+  }
+
+  const handleForgotPassword = async ()=>{
+    await Api.forgotPassword(password);
   }
   
 
@@ -42,7 +46,7 @@ export default function (props) {
             <h3 className="Auth-form-title">Sign In</h3>
             <div className="text-center">
               Not registered yet?{" "}
-              <span className="link-primary" onClick={changeAuthMode}>
+              <span className="link-primary" onClick={()=>{changeAuthMode("signup")}}>
                 Sign Up
               </span>
             </div>
@@ -69,8 +73,48 @@ export default function (props) {
                 Submit
               </button>
             </div>
+            <div className="text-center mt-2">
+              Forgot{" "}
+              <span className="link-primary" onClick={()=>{changeAuthMode("forgotPassword")}}>
+                password?
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (authMode === "forgotPassword") {
+    return (
+      <div className="Auth-form-container">
+        <div className="Auth-form">
+          <div className="Auth-form-content">
+            <h3 className="Auth-form-title">Forgot Password</h3>
+            <div className="text-center">
+              Not registered yet?{" "}
+              <span className="link-primary" onClick={()=>{changeAuthMode("signup")}}>
+                Sign Up
+              </span>
+            </div>
+            <div className="form-group mt-3">
+              <label>Email address</label>
+              <input
+                type="email"
+                className="form-control mt-1"
+                placeholder="Enter email"
+                onChange={handleInputEmail}
+              />
+            </div>
+            <div className="d-grid gap-2 mt-3">
+              <button type="submit" className="btn btn-primary" onClick={handleForgotPassword}>
+                Submit
+              </button>
+            </div>
             <p className="text-center mt-2">
-              Forgot <a href="#">password?</a>
+              <span className="link-primary" onClick={()=>{changeAuthMode("signin")}}>
+                Sign In
+              </span>
             </p>
           </div>
         </div>
@@ -85,7 +129,7 @@ export default function (props) {
           <h3 className="Auth-form-title">Sign In</h3>
           <div className="text-center">
             Already registered?{" "}
-            <span className="link-primary" onClick={changeAuthMode}>
+            <span className="link-primary" onClick={()=>{changeAuthMode("signin")}}>
               Sign In
             </span>
           </div>
@@ -122,7 +166,7 @@ export default function (props) {
             </button>
           </div>
           <p className="text-center mt-2">
-            Forgot <a href="#">password?</a>
+            Forgot <a onClick={()=>{changeAuthMode("forgotPassword")}}>password?</a>
           </p>
         </div>
       </div>

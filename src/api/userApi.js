@@ -26,5 +26,17 @@ export default {
     } catch (error) {
       throw error;
     }
+  },
+
+  forgotPassword: async(password) =>{
+    try {
+      const res = await customAxios({
+        method: 'POST',
+        url:"http://localhost:9000/auth/forgotPassword",
+        data: {password: password}
+      })
+    } catch (error) {
+      throw error;
+    }
   }
 };
