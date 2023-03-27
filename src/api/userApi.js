@@ -28,12 +28,12 @@ export default {
     }
   },
 
-  forgotPassword: async(password) =>{
+  forgotPassword: async(email) =>{
     try {
       const res = await customAxios({
         method: 'POST',
         url:"http://localhost:9000/auth/forgotPassword",
-        data: {password: password}
+        data: {email: email}
       })
     } catch (error) {
       throw error;

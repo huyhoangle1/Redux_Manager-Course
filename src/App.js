@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CourseList from './components/CourseList';
 import CourseForm from './components/CourseForm';
 import SearchBar from './components/SearchBar';
@@ -11,14 +11,20 @@ import FavoriteList from './components/favoriteList';
 import CloneFb from './components/cloneFb';
 import Home from './components/Home';
 import Login from './components/LoginForm';
+import { useEffect } from 'react';
 
 
 const AdminDashboard = () => {
   const courses = useSelector(state => state.courses);
-  const accessToken = useSelector(state => state.accessToken);
+  const Logout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  }
+  const accessToken = JSON.parse(localStorage.getItem('token'));
+
+
   
-  
-  if(accessToken.length === 0) return <Login />
+  if(!accessToken || accessToken.length <= 0) return <Login />
     
   return (
     <BrowserRouter>
@@ -96,7 +102,7 @@ const AdminDashboard = () => {
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" onClick={Logout}>
                     <i class="bi bi-box-arrow-left"></i> Logout
                   </a>
                 </li>

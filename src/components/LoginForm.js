@@ -30,7 +30,9 @@ export default function (props) {
   }
 
   const handleForgotPassword = async ()=>{
-    await Api.forgotPassword(password);
+    console.log(email);
+    await Api.forgotPassword(email);
+    message.success("Check your email")
   }
   
 
@@ -40,6 +42,7 @@ export default function (props) {
 
   if (authMode === "signin") {
     return (
+      <form>
       <div className="Auth-form-container">
         <div className="Auth-form">
           <div className="Auth-form-content">
@@ -53,6 +56,7 @@ export default function (props) {
             <div className="form-group mt-3">
               <label>Email address</label>
               <input
+                required
                 type="email"
                 className="form-control mt-1"
                 placeholder="Enter email"
@@ -62,6 +66,7 @@ export default function (props) {
             <div className="form-group mt-3">
               <label>Password</label>
               <input
+                required
                 type="password"
                 className="form-control mt-1"
                 placeholder="Enter password"
@@ -82,11 +87,13 @@ export default function (props) {
           </div>
         </div>
       </div>
+      </form>
     )
   }
 
   if (authMode === "forgotPassword") {
     return (
+      <form>
       <div className="Auth-form-container">
         <div className="Auth-form">
           <div className="Auth-form-content">
@@ -119,11 +126,13 @@ export default function (props) {
           </div>
         </div>
       </div>
+      </form>
     )
   }
 
   return (
-    <div className="Auth-form-container">
+    <form>
+     <div className="Auth-form-container">
       <div className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
@@ -171,5 +180,6 @@ export default function (props) {
         </div>
       </div>
     </div>
+    </form>
   )
 }

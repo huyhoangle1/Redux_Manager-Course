@@ -11,6 +11,14 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
   const chooseFriends = useSelector((state) => state.chooseFriends);
   const chooseEmoji = useSelector((state) => state.chooseEmoji);
   const chooseAddress = useSelector((state) => state.chooseAddress);
+  const [show, setShow] = useState(false);
+  const handleOnMouseEnter = () => {
+      setShow(true);
+  }
+  const handleOnMouseLeave = () => {
+      setShow(false);
+  }
+  const ref = useRef(null);
 
   const getRenderTooltip = (content) => {
     return (
@@ -22,7 +30,7 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
 
   const getRenderTooltipProfile = (content) => {
     return (
-      <Popover id="popover-basic">
+      <Popover id="popover-basic" onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
         <Popover.Body>
           <div className="popover-body-profile">
             <div className="popover-profile-content">
@@ -135,8 +143,9 @@ const CreatePostFbModel = ({ showModal, isShowModal, closeModel, setShowModalFri
           <OverlayTrigger
             placement="right"
             overlay={getRenderTooltipProfile(chooseFriends[0])}
+            show={show} 
           >
-            <span> {chooseFriends[0]}</span>
+            <span  ref={ref} onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}> {chooseFriends[0]}</span>
           </OverlayTrigger></a>
       </> :
         count === 2 ? <>cùng với <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[0]}</a> và <a class="text-underline-hover" onClick={handleOpenModalFriends}>{chooseFriends[1]}</a></> :
